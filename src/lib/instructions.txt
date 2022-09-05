@@ -1,0 +1,7 @@
+All my code goes in this folder. You can use $lib as a shorthand when importing a file
+
+Use this command to preview the site:
+    npm run dev -- --open
+Use Ctrl+C to terminate, or just close the terminal
+
+the <head> tag can be accessed in src/app.html
