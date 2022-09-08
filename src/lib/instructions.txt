@@ -1,4 +1,4 @@
-All my code goes in this folder. You can use $lib as a shorthand when importing a file
+All my code goes in this folder. You can use $lib and $comps (components) as shorthands when importing something
 
 Use this command to preview the site:
     npm run dev -- --open

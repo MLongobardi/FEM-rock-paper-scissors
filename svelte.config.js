@@ -1,9 +1,13 @@
 import adapter from '@sveltejs/adapter-auto';
+import path from "path";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			"$comps": path.resolve("./src/lib/components")
+		}
 	}
 };
 
