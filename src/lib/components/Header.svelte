@@ -1,16 +1,15 @@
 <script>
-	import { gameStore } from "$lib/scripts/store.js"
-	let symbolNames = [["ROCK", "PAPER", "SCISSORS"],["ROCK", "PAPER", "SCISSORS", "LIZARD", "SPOCK"]]
+	import { gameStore } from "$scripts/store.js";
 </script>
 
 <header>
 	<div>
-		{#each symbolNames[$gameStore.bonusMode] as symbolName}
+		{#each $gameStore.symbolNames as symbolName}
 		<h3>{symbolName}</h3>
 		{/each}
 	</div>
 	<div>
-		<h3>Current Score: {$gameStore.currentPoints[$gameStore.bonusMode]}</h3>
+		<h3>Current Score: {$gameStore.getPoints}</h3>
 	</div>
 </header>
 
@@ -22,6 +21,7 @@
 		background: yellow;
 		margin: 10px;
 		padding: 10px;
+		min-height: 110px; /*temp*/
 	}
 
 	h3 {
