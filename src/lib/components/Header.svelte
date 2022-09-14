@@ -5,7 +5,7 @@
 <header>
 	<div>
 		{#each $gameStore.symbolNames as symbolName}
-		<h3>{symbolName}</h3>
+			<h3>{symbolName}</h3>
 		{/each}
 	</div>
 	<div>

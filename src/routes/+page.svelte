@@ -1,4 +1,4 @@
 <script>
-    import App from "$comps/App.svelte";
+    import App from "$lib/components/App.svelte";
 </script>
 <App />

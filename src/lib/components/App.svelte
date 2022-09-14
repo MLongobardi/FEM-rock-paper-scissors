@@ -1,45 +1,41 @@
 <script>
-	import Header from "$comps/Header.svelte";
-	import Main from "$comps/Main.svelte";
-	import Footer from "$comps/Footer.svelte";
-	import { onMount } from "svelte";
+	import components from "$comps";
+	const { Header, Main, Footer } = components;
+
 	import { gameStore } from "$scripts/store.js";
+	import { SETTINGS } from "$lib/my-config.js";
 
-	//Apply .big-screen class to body when screen is larger than MOBILE_BREAKPOINT
-	const MOBILE_BREAKPOINT = 375; //actually, the style guide says that the design was done with 375px width, not that it should be the breakpoint...
-	let screenSize;
-	$: isBigScreen = screenSize >= MOBILE_BREAKPOINT; //pass isBigScreen as prop
-	let documentBody;
+	let innerWidth; //binded to window.innerWidth
 
-	onMount(() => {
-		documentBody = document.body;
-	});
-
-	$: if (documentBody) {
-		if (isBigScreen) {
-			documentBody.classList.add("big-screen");
+	//Keeps store's screenSize value updated and applies .big-screen class to body when it is larger than MOBILE_BREAKPOINT
+	$: if (innerWidth) {
+		gameStore.setScreen(innerWidth);
+		if ($gameStore.screenSize >= SETTINGS.MOBILE_BREAKPOINT) {
+			document.body.classList.add("big-screen");
 		} else {
-			documentBody.classList.remove("big-screen");
+			document.body.classList.remove("big-screen");
 		}
 	}
 </script>
 
-<svelte:window bind:innerWidth={screenSize} />
+<svelte:window bind:innerWidth />
 
 <Header />
 <Main />
 <Footer />
 
+<!--temp-->
 <div style="background: white">
-<button on:click={gameStore.switchMode}>test Mode</button>
-<button on:click={gameStore.decreaseScore}>test Dec</button>
-<button on:click={gameStore.increaseScore}>test inc</button>
-<button on:click={gameStore.resetScore}>test Res</button>
+	<button on:click={gameStore.switchMode}>test Mode</button>
+	<button on:click={gameStore.decreaseScore}>test Dec</button>
+	<button on:click={gameStore.increaseScore}>test inc</button>
+	<button on:click={gameStore.resetScore}>test Res</button>
 
-bonusMode: {$gameStore.bonusMode}
-currentScore: {$gameStore.getPoints}
+	bonusMode: {$gameStore.bonusMode}
+	currentScore: {$gameStore.getPoints}
 </div>
 
+<!--end temp-->
 <style>
 	:root {
 		/*variables*/

@@ -6,7 +6,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			"$comps": path.resolve("./src/lib/components"),
+			"$comps": path.resolve("./src/lib/components/_exporter.js"),
 			"$scripts": path.resolve("./src/lib/scripts")
 		}
 	}
