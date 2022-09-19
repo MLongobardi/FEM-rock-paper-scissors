@@ -11,15 +11,11 @@ export function vertexFinder(n, r) {
 	}
 
 	function hack(list) {
-		//list of hacks to make result conform to design
-		if (list.length == 3) {
+		if (SETTINGS.HACK && list.length == 3) {
 			//inverts triangle in normal mode
 			list.map((el) => {
-				el[1] *= -1;
+				el.y *= -1;
 			});
-		} else if (list.length == 5) {
-			//shifts symbols in the correct order in bonus mode
-			list = [3, 4, 0, 2, 1].map((el) => list[el]);
 		}
 		return list;
 	}
@@ -29,9 +25,12 @@ export function vertexFinder(n, r) {
 	let d = (2 * Math.PI) / n;
 
 	for (let i = 0; i < n; i++) {
-		vertices.push([rounder(r * Math.cos(th + i * d)), rounder(r * Math.sin(th + i * d))]);
+		vertices.push({
+			x: rounder(r * Math.cos(th + i * d)),
+			y: rounder(r * Math.sin(th + i * d)),
+			id: i + 1,
+		});
 	}
-
-	if (SETTINGS.VERTEX_HACK) return hack(vertices);
-	return vertices;
+	
+	return hack(vertices);
 }

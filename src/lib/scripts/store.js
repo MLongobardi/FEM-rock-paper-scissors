@@ -14,7 +14,7 @@ const cleanState = {
 		return ["ROCK", "PAPER", "SCISSORS"].concat(this.bonusMode ? ["LIZARD", "SPOCK"] : []);
 	},
 
-	screenSize: 0, //window inneWidth
+	screenSize: 200, //window innerWidth
 };
 
 function createStore() {

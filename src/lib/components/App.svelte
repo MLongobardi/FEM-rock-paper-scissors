@@ -1,6 +1,19 @@
 <script>
+	/*
+	//standard way
+	import Header from "$lib/components/Header.svelte"
+	import Main from "$lib/components/Main.svelte"
+	import Footer from "$lib/components/Footer.svelte"
+	*/
+
+	//_exporter.js OPTION 1
+	import { Header, Main, Footer } from "$comps";
+
+	/*
+	//_exporter.js OPTION 2
 	import components from "$comps";
 	const { Header, Main, Footer } = components;
+	*/
 
 	import { gameStore } from "$scripts/store.js";
 	import { SETTINGS } from "$lib/my-config.js";
@@ -28,7 +41,7 @@
 <div style="background: white">
 	<button on:click={gameStore.switchMode}>test Mode</button>
 	<button on:click={gameStore.decreaseScore}>test Dec</button>
-	<button on:click={gameStore.increaseScore}>test inc</button>
+	<button on:click={gameStore.increaseScore}>test Inc</button>
 	<button on:click={gameStore.resetScore}>test Res</button>
 
 	bonusMode: {$gameStore.bonusMode}
@@ -47,7 +60,9 @@
 		background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 	}
 
+	/*
 	:global(.big-screen) div {
-		/*desktop css*/
+		//desktop version css
 	}
+	*/
 </style>

@@ -1,10 +1,16 @@
 <script>
-	export let name, coords, size;
+	export let name, coords, radius;
 </script>
 
-<div class="symbol" style:width="{size}px" style:height="{size}px">
+<div
+	class="symbol"
+	id="symbol-{coords.id}"
+	style:width="{radius * 2}px"
+	style:height="{radius * 2}px"
+>
 	<p>{name}</p>
-	<p>{coords}</p>
+	<p>{coords.x},{coords.y}</p>
+	<p>{coords.id}</p>
 </div>
 
 <style>
