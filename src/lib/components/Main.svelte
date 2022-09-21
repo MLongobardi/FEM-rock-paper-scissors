@@ -36,7 +36,6 @@
 </script>
 
 <main>
-	<h2>MAIN</h2>
 	<div class="symbol-holder" style:width="{symbolHolderSize}px" style:height="{symbolHolderSize}px">
 		<div
 			class="anchor-holder"
@@ -51,7 +50,7 @@
 						style:left="{vertexList[index].x}px"
 						style:bottom="{vertexList[index].y}px"
 					>
-						<Symbol name={symbolName} coords={vertexList[index]} radius={symbolRadius} />
+						<Symbol name={symbolName.toLowerCase()} coords={vertexList[index]} radius={symbolRadius} />
 					</span>
 				{/each}
 			</span>
@@ -61,7 +60,8 @@
 
 <style>
 	main {
-		background: orange;
+		color: white;
+		/*background: orange;*/
 		margin: 10px;
 		padding: 10px;
 	}
@@ -71,12 +71,12 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		background: red;
+		/*background: red;*/
 		margin: 0 auto;
 	}
 
 	.anchor-holder {
-		background: darkred;
+		/*background: darkred;*/
 		border-radius: 100%;
 	}
 

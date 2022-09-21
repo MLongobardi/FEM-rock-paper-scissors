@@ -32,6 +32,9 @@
 </script>
 
 <svelte:window bind:innerWidth />
+<svelte:head>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700" rel="stylesheet">
+</svelte:head>
 
 <Header />
 <Main />
@@ -54,6 +57,24 @@
 		/*variables*/
 		--dark-text: hsl(229, 25%, 31%);
 		--score-text: hsl(229, 64%, 46%);
+		--header-outline: hsl(217, 16%, 45%);
+		/*
+		Scissors Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%)
+		- Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
+		- Rock Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%)
+		- Lizard Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%)
+		- Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%)
+		*/
+		--scissors-bottom: hsl(39, 89%, 49%);
+		--scissors-top: hsl(40, 84%, 53%);
+		--paper-bottom: hsl(230, 89%, 62%);
+		--paper-top: hsl(230, 89%, 65%);
+		--rock-bottom: hsl(349, 71%, 52%);
+		--rock-top: hsl(349, 70%, 56%);
+		--lizard-bottom: hsl(261, 73%, 60%);
+		--lizard-top: hsl(261, 72%, 63%);
+		--spock-bottom: hsl(189, 59%, 53%);
+		--spock-top: hsl(189, 58%, 57%);
 	}
 
 	:global(body) {

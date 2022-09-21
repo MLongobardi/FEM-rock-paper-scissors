@@ -12,7 +12,7 @@
 			y1={v1.y * -1}
 			x2={v2.x}
 			y2={v2.y * -1}
-			stroke="black"
+			stroke="rgba(0,0,0,0.25)"
 			stroke-width={lineWidth}
 		/>
 	{/each}
