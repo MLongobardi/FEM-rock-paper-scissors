@@ -16,7 +16,7 @@
 	import { gameStore } from "$scripts/store.js";
 	import { vertexFinder } from "$scripts/vertexFinder.js";
 	import { SETTINGS } from "$lib/my-config.js";
-	
+
 	$: symbolHolderSize = Math.min(
 		Math.max($gameStore.screenSize / 2, SETTINGS.MIN_SYMBOL_HOLDER),
 		SETTINGS.MAX_SYMBOL_HOLDER
@@ -50,7 +50,11 @@
 						style:left="{vertexList[index].x}px"
 						style:bottom="{vertexList[index].y}px"
 					>
-						<Symbol name={symbolName.toLowerCase()} coords={vertexList[index]} radius={symbolRadius} />
+						<Symbol
+							name={symbolName.toLowerCase()}
+							coords={vertexList[index]}
+							radius={symbolRadius}
+						/>
 					</span>
 				{/each}
 			</span>

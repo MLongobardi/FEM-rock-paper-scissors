@@ -14,7 +14,7 @@ const cleanState = {
 		return ["ROCK", "PAPER", "SCISSORS"].concat(this.bonusMode ? ["LIZARD", "SPOCK"] : []);
 	},
 
-	screenSize: 0, //window innerWidth
+	screenSize: 0, //only used if CONTINUOUS_RESPONSIVENESS is set to true in my-config.js
 };
 
 function createStore() {
@@ -60,7 +60,7 @@ function createStore() {
 	//remove standard store methods with object destructuring and return store
 	//eslint-disable-next-line
 	const { set, update, ...returnStore } = tempStore;
-	return returnStore; // subscribe, switchMode, increaseScore, decreaseScore, resetScore
+	return returnStore; // subscribe, switchMode, increaseScore, decreaseScore, resetScore, setScreen
 }
 
 export const gameStore = createStore();

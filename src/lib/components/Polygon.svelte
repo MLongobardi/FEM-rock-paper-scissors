@@ -1,6 +1,4 @@
 <script>
-	import { SETTINGS } from "$lib/my-config.js";
-
 	export let vertexList, lineWidth;
 </script>
 

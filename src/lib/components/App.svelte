@@ -19,21 +19,33 @@
 	import { SETTINGS } from "$lib/my-config.js";
 
 	let innerWidth; //binded to window.innerWidth
+	let mediaNames = Object.keys(SETTINGS.DISCRETE_BREAKPOINTS).map((name) => "media-" + name);
+	let breakpoints = Object.values(SETTINGS.DISCRETE_BREAKPOINTS);
 
-	//Keeps store's screenSize value updated and applies .big-screen class to body when it is larger than MOBILE_BREAKPOINT
+	//Keeps store's screenSize value updated and applies the correct class to body depending on screen size
 	$: if (innerWidth) {
-		gameStore.setScreen(innerWidth);
-		if ($gameStore.screenSize >= SETTINGS.MOBILE_BREAKPOINT) {
-			document.body.classList.add("big-screen");
-		} else {
-			document.body.classList.remove("big-screen");
+		if (SETTINGS.CONTINUOUS_RESPONSIVENESS) {
+			gameStore.setScreen(innerWidth);
+		}
+		
+		//finds index of current media
+		let i = -1;
+		breakpoints.forEach((el) => {
+			if (innerWidth >= el) i++;
+		});
+		
+		if (!document.body.classList.contains(mediaNames[i])) {
+			document.body.classList.remove(...mediaNames);
+			if (mediaNames[i]) {
+				document.body.classList.add(mediaNames[i]);
+			}
 		}
 	}
 </script>
 
 <svelte:window bind:innerWidth />
 <svelte:head>
-	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700"	rel="stylesheet"/>
 </svelte:head>
 
 <Header />
@@ -50,21 +62,14 @@
 	bonusMode: {$gameStore.bonusMode}
 	currentScore: {$gameStore.getPoints}
 </div>
-
 <!--end temp-->
+
 <style>
 	:root {
 		/*variables*/
 		--dark-text: hsl(229, 25%, 31%);
 		--score-text: hsl(229, 64%, 46%);
 		--header-outline: hsl(217, 16%, 45%);
-		/*
-		Scissors Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%)
-		- Paper Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%)
-		- Rock Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%)
-		- Lizard Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%)
-		- Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%)
-		*/
 		--scissors-bottom: hsl(39, 89%, 49%);
 		--scissors-top: hsl(40, 84%, 53%);
 		--paper-bottom: hsl(230, 89%, 62%);
@@ -82,7 +87,7 @@
 	}
 
 	/*
-	:global(.big-screen) div {
+	:global(.media-XL) div {
 		//desktop version css
 	}
 	*/
