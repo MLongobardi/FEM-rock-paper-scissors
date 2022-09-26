@@ -52,18 +52,6 @@
 <Main />
 <Footer />
 
-<!--temp-->
-<div style="background: white">
-	<button on:click={gameStore.switchMode}>test Mode</button>
-	<button on:click={gameStore.decreaseScore}>test Dec</button>
-	<button on:click={gameStore.increaseScore}>test Inc</button>
-	<button on:click={gameStore.resetScore}>test Res</button>
-
-	bonusMode: {$gameStore.bonusMode}
-	currentScore: {$gameStore.getPoints}
-</div>
-<!--end temp-->
-
 <style>
 	:root {
 		/*variables*/

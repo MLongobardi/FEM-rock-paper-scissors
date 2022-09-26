@@ -9,6 +9,8 @@ export { default as Main } from "./Main.svelte";
 export { default as Footer } from "./Footer.svelte";
 export { default as Symbol } from "./Symbol.svelte";
 export { default as Polygon } from "./Polygon.svelte";
+export { default as SymbolPicker } from "./SymbolPicker.svelte";
+export { default as Result } from "./Result.svelte";
 
 /*
 //OPTION 2

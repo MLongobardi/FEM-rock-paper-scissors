@@ -1,19 +1,16 @@
 <script>
 	import { gameStore } from "$scripts/store.js";
+
 	let logoPath = "/images/logo.svg";
 	$: logoMod = $gameStore.bonusMode ? "-bonus" : "";
 	$: logoPath = "/images/logo" + logoMod + ".svg";
 </script>
 
 <header>
-	<!--
-	<div style:font-size={120/$gameStore.symbolNames.length+"px"}>
-		{#each $gameStore.symbolNames as symbolName}
-			<h3 class="symbol-title">{symbolName}</h3>
-		{/each}
-	</div>
-	-->
+	<div class="logo-holder">
 	<img alt="logo{logoMod}" src={logoPath}/>
+	</div>
+	<button on:click={gameStore.switchMode} disabled={!$gameStore.matchLogic.isPicker}>Change!</button>
 	<div class="score-box">
 		<span class="score-text">SCORE</span>
 		<span class="score-number">{$gameStore.getPoints}</span>
@@ -34,10 +31,40 @@
 		max-width: 800px;
 		height: 120px;
 	}
+	
+	.logo-holder {
+		height: 100%;
+		width: 200px;
+	}
 
 	img {
 		height: 100%;
 		width: auto;
+	}
+
+	button {
+		background: transparent;
+		border: 2px solid white;
+		border-radius: 10px;
+		color: white;
+		padding: 10px 12px;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	button:hover {
+		background: white;
+		color: var(--dark-text);
+		border: 2px solid white;
+		transition: all 0.2s;
+	}
+	button:active {
+		background: transparent;
+		color: white;
+	}
+	button:disabled {
+		background: transparent;
+		color: var(--header-outline);
+		border: 2px solid var(--header-outline);
 	}
 
 	.score-box {
