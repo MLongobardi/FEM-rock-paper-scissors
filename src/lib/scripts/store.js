@@ -37,22 +37,6 @@ function createStore() {
 			return draft;
 		});
 	};
-	
-	/*
-	tempStore.increaseScore = () => {
-		tempStore.update((draft) => {
-			draft.currentPoints[draft.bonusMode]++;
-			return draft;
-		});
-	};
-	
-	tempStore.decreaseScore = () => {
-		tempStore.update((draft) => {
-			draft.currentPoints[draft.bonusMode]--;
-			return draft;
-		});
-	};
-	*/
 
 	tempStore.resetScore = () => {
 		tempStore.update((draft) => {

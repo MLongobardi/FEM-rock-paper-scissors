@@ -25,6 +25,11 @@
 	//Keeps store's screenSize value updated and applies the correct class to body depending on screen size
 	$: if (innerWidth) {
 		if (SETTINGS.CONTINUOUS_RESPONSIVENESS) {
+			/*
+			If you plan to make the condition dynamic (say, using prefers-reduced-motion?) add:
+				document.body.classList.remove(...mediaNames);
+			here and put the code after this if block in an else
+			*/
 			gameStore.setScreen(innerWidth);
 		}
 		
