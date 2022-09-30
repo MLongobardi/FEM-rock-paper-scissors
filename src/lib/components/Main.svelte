@@ -52,7 +52,7 @@
 		position: relative;
 		margin: 0 auto;
 		aspect-ratio: 1 / 1; /*sets height equal to (dynamic) width*/
-		transition: width 0.05s; /*sizeDiscr doesn't update on load without this*/
+		transition: width 0.1s; /*sizeDiscr doesn't update on load without this*/
 	}
 
 	.picker-wrapper.discr {

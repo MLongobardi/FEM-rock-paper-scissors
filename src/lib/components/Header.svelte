@@ -17,8 +17,30 @@
 
 	</div>
 </header>
+<!--temp-->
+<div style="text-align: center; color: white; margin: 0; margin-top: -40px;">
+	<p class="temp">/*TEMP*/ current media is: </p>
+</div>
+<!--end-temp-->
 
 <style>
+	/*temp*/
+		.temp::after {
+			content: " none, technically XS";
+		}
+		:global(.media-S) .temp::after{
+			content: " S";
+		}
+		:global(.media-M) .temp::after{
+			content: " M";
+		}
+		:global(.media-L) .temp::after{
+			content: " L";
+		}
+		:global(.media-XL) .temp::after{
+			content: " XL";
+		}
+	/*end-temp*/
 	header {
 		display: flex;
 		justify-content: space-between;
@@ -44,7 +66,7 @@
 
 	button {
 		background: transparent;
-		border: 2px solid white;
+		border: 2px solid var(--header-outline);
 		border-radius: 10px;
 		color: white;
 		padding: 10px 12px;
