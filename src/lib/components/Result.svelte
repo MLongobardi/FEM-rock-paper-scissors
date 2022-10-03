@@ -6,24 +6,18 @@
 
 <div class="result-wrapper">
 	<div class="player pick">
-		<div class="pick-header">
-			<h3>YOU PICKED</h3>
-		</div>
+		<h3 class="pick-header">YOU PICKED</h3>
 		<Symbol name={$gameStore.matchLogic.playerSymbol.toLowerCase()} radius={false} pickerVersion={false}/>
 	</div>
 	
 	<div class="house pick">
-		<div class="pick-header">
-			<h3>THE HOUSE PICKED</h3>
-		</div>
+		<h3 class="pick-header">THE HOUSE PICKED</h3>
 		<Symbol name={$gameStore.matchLogic.houseSymbol.toLowerCase()} radius={false} pickerVersion={false}/>
 	</div>
-	
-	<div class="break"/>
 
 	<div class="result">
 		{#if $gameStore.matchLogic.winner == "DRAW"}
-			<h2>IT'S A DRAW</h2>
+			<h2>DRAW</h2>
 		{:else}
 			<h2>YOU {$gameStore.matchLogic.winner == "PLAYER" ? "WIN" : "LOSE"}</h2>
 		{/if}
@@ -33,45 +27,45 @@
 
 <style>
 	.result-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-areas: "player house" "result result";
 		font-size: 16px;
 	}
-
-	.break {
-		flex-basis: 100%;
-		height: 0;
-		order: 3;
+	:global(:is(.media-M, .media-L, .media-XL)) .result-wrapper {
+		grid-template-areas: "player result house";
 	}
 
 	.pick {
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: center;
-		margin: 0 2.5em;
+		grid-area: player;
+		gap: 1.5em;
 	}
-	.player {
-		order: 1;
+	.pick.house {
+		grid-area: house;
 	}
-	.house {
-		order: 2;
+	:global(:is(.media-M, .media-L, .media-XL)) .pick {
+		flex-direction: column;
 	}
 	
 	.pick-header {
-		font-size: 0.6em;
+		font-size: 0.7em;
 		letter-spacing: 3px;
-		margin-bottom: 2em;
+		margin: 0;
 	}
 	
 	.result {
-		order: 4;
+		grid-area: result;
+		justify-self: center;
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	
 	.result h2 {
-		font-size: 1.8em;
+		font-size: 1.6em;
 	}
 
 	button {
@@ -90,13 +84,5 @@
 	}
 	:global(.media-XL) .result-wrapper {
 		font-size: 40px;
-	}
-	
-	:global(.media-M) .pick, :global(.media-L) .pick, :global(.media-XL) .pick {
-		flex-direction: column;
-	}
-	
-	:global(.media-M) .result, :global(.media-L) .result, :global(.media-XL) .result {
-		order: 1;
 	}
 </style>

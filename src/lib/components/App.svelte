@@ -80,8 +80,8 @@
 	}
 
 	/*
-	:global(.media-XL) div {
-		//desktop version css
+	:global(:is(.media-M, .media-L, .media-XL)) div {
+		//example of css for bigger screens
 	}
 	*/
 </style>

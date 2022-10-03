@@ -1,21 +1,18 @@
 <script>
 	import { gameStore } from "$scripts/store.js";
+	import { Button, Rulebox } from "$comps";
 
 	let overlay;
 
 	function toggleRules() {
-		if (overlay.style.display == "none") {
-			overlay.style.display = "flex";
-		} else {
-			overlay.style.display = "none";
-		}
+		overlay.classList.toggle("hidden");
 	}
 </script>
 
 <footer>
-	<div class="buttons">
-		<button on:click={gameStore.resetScore}>RESET SCORE</button>
-		<button on:click={toggleRules}>RULES</button>
+	<div class="buttons-holder">
+		<Button func={gameStore.resetScore}>RESET SCORE</Button>
+		<Button func={toggleRules}>RULES</Button>
 	</div>
 	<p class="attribution">
 		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
@@ -25,19 +22,9 @@
 		>.
 	</p>
 </footer>
-<div class="overlay" bind:this={overlay} on:click={toggleRules}>
-	<div class="rule-box">
-		<div class="rule-box-header">
-			<h2>RULES</h2>
-			<!--img-->
-		</div>
 
-		{#if $gameStore.bonusMode}
-			<img alt="rules-bonus" src="/images/image-rules-bonus.svg" />
-		{:else}
-			<img alt="rules" src="/images/image-rules.svg" />
-		{/if}
-	</div>
+<div class="overlay hidden" bind:this={overlay} on:click|self={toggleRules}>
+	<Rulebox bonusMode={$gameStore.bonusMode} closeFunc={toggleRules}/>
 </div>
 
 <style>
@@ -46,13 +33,23 @@
 		margin: 0 auto;
 	}
 
-	.buttons {
+	.buttons-holder {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		justify-content: center;
+		max-width: 140px;
+		font-size: 15px;
+		margin: 0 auto;
 	}
-
+	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder {
+		flex-direction: row;
+		justify-content: space-between;
+		font-size: 20px;
+		max-width: 800px;
+	}
+	
 	.overlay {
-		display: none;
+		display: flex;
 		position: fixed;
 		top: 0;
 		justify-content: center;
@@ -60,37 +57,10 @@
 		width: 100vw;
 		height: 100vh;
 		background: rgba(0, 0, 0, 0.6);
-		z-index: 1000;
+		z-index: 1
 	}
-
-	.rule-box {
-		background: white;
-	}
-
-	/*copied from Header.svelte, could be worth it to make a Button.svelte but with only two buttons in the whole app it's probably not worth it*/
-	button {
-		background: transparent;
-		border: 2px solid var(--header-outline);
-		border-radius: 10px;
-		color: white;
-		padding: 10px 12px;
-		font-size: 20px;
-		cursor: pointer;
-	}
-	button:hover {
-		background: white;
-		color: var(--dark-text);
-		border: 2px solid white;
-		transition: all 0.2s;
-	}
-	button:active {
-		background: transparent;
-		color: white;
-	}
-	button:disabled {
-		background: transparent;
-		color: var(--header-outline);
-		border: 2px solid var(--header-outline);
+	.overlay.hidden {
+		display: none;
 	}
 
 	.attribution {
