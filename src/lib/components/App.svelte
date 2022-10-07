@@ -26,7 +26,7 @@
 	$: if (innerWidth) {
 		if (SETTINGS.CONTINUOUS_RESPONSIVENESS) {
 			/*
-			If you plan to make the condition dynamic (say, using prefers-reduced-motion?) add:
+			If you plan to make the condition dynamic (say, checking for prefers-reduced-motion?) add:
 				document.body.classList.remove(...mediaNames);
 			here and put the code after this if block in an else
 			*/
@@ -53,6 +53,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700"	rel="stylesheet"/>
 </svelte:head>
 
+<!--temp-->
+<div style="text-align: center; color: white; margin-bottom: -2em;">
+	<span class="temp">/*TEMP*/ current media is:</span><br>
+	<span>/*TEMP*/ screen size is: {innerWidth}px</span>
+</div>
+<!--end-temp-->
 <Header />
 <Main />
 <Footer />
@@ -73,8 +79,15 @@
 		--lizard-top: hsl(261, 72%, 63%);
 		--spock-bottom: hsl(189, 59%, 53%);
 		--spock-top: hsl(189, 58%, 57%);
-	}
 
+		/*
+		For the next project, add a font size here, change it as needed with media queries, and define all css sizes with rem instead of px/em.
+		However, adding the media-? classes to the body as I did is still useful when sizes aren't the only thing that changes, such as the positioning of the elements in Result.svelte.
+		That would require having further media queries inside various components, which would be hard to standardize
+		Or maybe something like this??? font-size: clamp(1rem, 4vw, 3rem);
+		*/
+	}
+	
 	:global(body) {
 		background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 	}
@@ -84,4 +97,22 @@
 		//example of css for bigger screens
 	}
 	*/
+
+	/*temp*/
+	.temp::after {
+		content: " none, technically XS";
+	}
+	:global(.media-S) .temp::after {
+		content: " S";
+	}
+	:global(.media-M) .temp::after {
+		content: " M";
+	}
+	:global(.media-L) .temp::after {
+		content: " L";
+	}
+	:global(.media-XL) .temp::after {
+		content: " XL";
+	}
+	/*end-temp*/
 </style>

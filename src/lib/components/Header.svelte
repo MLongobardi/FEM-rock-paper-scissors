@@ -7,12 +7,6 @@
 	$: logoPath = "/images/logo" + logoMod + ".svg";
 </script>
 
-<!--temp-->
-<div style="text-align: center; color: white; margin: 0; margin-bottom: -40px;">
-	<p class="temp">/*TEMP*/ current media is:</p>
-</div>
-<!--end-temp-->
-
 <header>
 	<div class="logo-holder">
 		<img alt="logo{logoMod}" src={logoPath} />
@@ -25,23 +19,6 @@
 </header>
 
 <style>
-	/*temp*/
-	.temp::after {
-		content: " none, technically XS";
-	}
-	:global(.media-S) .temp::after {
-		content: " S";
-	}
-	:global(.media-M) .temp::after {
-		content: " M";
-	}
-	:global(.media-L) .temp::after {
-		content: " L";
-	}
-	:global(.media-XL) .temp::after {
-		content: " XL";
-	}
-	/*end-temp*/
 	header {
 		display: flex;
 		justify-content: space-between;
@@ -76,7 +53,7 @@
 		border-radius: 10px;
 		font-weight: bold;
 		width: 200px;
-		letter-spacing: 2px;
+		letter-spacing: 3px;
 	}
 	.score-text {
 		color: var(--score-text);

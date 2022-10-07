@@ -3,7 +3,6 @@
 	import { gameStore } from "$scripts/store.js";
 </script>
 
-
 <div class="result-wrapper">
 	<div class="player pick">
 		<h3 class="pick-header">YOU PICKED</h3>
@@ -30,11 +29,13 @@
 		display: grid;
 		grid-template-areas: "player house" "result result";
 		font-size: 16px;
+		max-width: 25em;
+		margin: 0 auto;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .result-wrapper {
 		grid-template-areas: "player result house";
 	}
-
+	
 	.pick {
 		display: flex;
 		flex-direction: column-reverse;
@@ -51,7 +52,7 @@
 	
 	.pick-header {
 		font-size: 0.7em;
-		letter-spacing: 3px;
+		letter-spacing: 0.1em;
 		margin: 0;
 	}
 	
