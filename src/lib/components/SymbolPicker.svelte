@@ -13,7 +13,7 @@
     import components from "$comps";
     const { Symbol, Polygon } = components;
     */
-
+	import { fade } from "svelte/transition";
 	import { gameStore } from "$scripts/store.js";
 	import { vertexFinder } from "$scripts/vertexFinder.js";
 	import { SETTINGS } from "$lib/my-config.js";
@@ -37,6 +37,7 @@
 	class="anchor-holder"
 	style:width="{anchorHolderRadius * 2}px"
 	style:height="{anchorHolderRadius * 2}px"
+	in:fade
 >
 	<span
 		class="anchor-origin"

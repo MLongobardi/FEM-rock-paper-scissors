@@ -7,6 +7,8 @@
 	function toggleRules() {
 		overlay.classList.toggle("hidden");
 	}
+	/*MOVE THIS TO THE BOTTOM OF THE SCREEN*/
+
 </script>
 
 <footer>
@@ -32,7 +34,7 @@
 		max-width: 1200px;
 		margin: 0 auto;
 	}
-
+	
 	.buttons-holder {
 		display: flex;
 		flex-direction: column;

@@ -10,4 +10,5 @@ export const SETTINGS = {
 	MAX_SYMBOL_HOLDER: 600, //max width for the symbol container
 	HACK: true, //enforces design look
 	VERTEX_PRECISION: 2, //number of decimal digits in vertexFinder's coordinates
+	RESULT_DELAY: 1000 //animation delay for game result
 };
