@@ -19,7 +19,9 @@
 	
 	let hiding = isHouse;
 	if (hiding) {
-		setTimeout(()=>{hiding=false},SETTINGS.RESULT_DELAY)
+		setTimeout(() => {
+			hiding = false;
+		}, SETTINGS.RESULT_DELAY);
 	}
 </script>
 
@@ -27,7 +29,7 @@
 	class="symbol"
 	class:in-picker={pickerVersion}
 	class:in-result={!pickerVersion}
-	class:hiding={hiding}
+	class:hiding
 	class:is-winner={isWinner}
 	class:is-draw={isDraw}
 	id="symbol-{name}"
@@ -49,11 +51,6 @@
 		transition: transform 0.3s ease-out;
 	}
 
-	img {
-		height: 50%;
-		width: auto;
-	}
-
 	.symbol,
 	.symbol-inner {
 		display: flex;
@@ -66,7 +63,32 @@
 	.symbol {
 		border-radius: 100%;
 		box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3);
+
+		--scissors-bottom: hsl(39, 89%, 49%);
+		--scissors-top: hsl(40, 84%, 53%);
+		--paper-bottom: hsl(230, 89%, 62%);
+		--paper-top: hsl(230, 89%, 65%);
+		--rock-bottom: hsl(349, 71%, 52%);
+		--rock-top: hsl(349, 70%, 56%);
+		--lizard-bottom: hsl(261, 73%, 60%);
+		--lizard-top: hsl(261, 72%, 63%);
+		--spock-bottom: hsl(189, 59%, 53%);
+		--spock-top: hsl(189, 58%, 57%);
 	}
+
+	.symbol-inner {
+		background: white;
+		border-radius: 100%;
+		height: 75%;
+		width: 75%;
+		box-shadow: inset 0px 0.3em 2px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	img {
+		height: 50%;
+		width: auto;
+	}
+
 	.symbol.in-picker {
 		transform: translate(-50%, -50%);
 		cursor: pointer;
@@ -83,22 +105,13 @@
 		animation-delay: var(--animation-delay);
 		animation-fill-mode: forwards;
 	}
-	
-	.symbol-inner {
-		background: white;
-		border-radius: 100%;
-		height: 75%;
-		width: 75%;
-		box-shadow: inset 0px 0.3em 2px 0 rgba(0, 0, 0, 0.2);
-	}
-	
 	.symbol.hiding {
 		background: transparent !important;
 		transform: scale(0.8);
 		box-shadow: none;
 	}
 	.symbol.hiding .symbol-inner {
-		background-color: rgba(0,0,0,0.2);
+		background-color: rgba(0, 0, 0, 0.2);
 		transform: scale(1.25);
 		box-shadow: none;
 	}
@@ -111,16 +124,20 @@
 			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05);
 		}
 		66% {
-			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05), 0 0 0 3.6em rgba(255, 255, 255, 0.03);
+			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05),
+				0 0 0 3.6em rgba(255, 255, 255, 0.03);
 		}
 		100% {
-			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05), 0 0 0 3.6em rgba(255, 255, 255, 0.03), 0 0 0 5.4em rgba(255, 255, 255, 0.02);
+			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05),
+				0 0 0 3.6em rgba(255, 255, 255, 0.03), 0 0 0 5.4em rgba(255, 255, 255, 0.02);
 		}
 	}
 
 	@keyframes loser {
-		100% {filter: grayscale(1);
-		opacity: 0.7;
-		transform: scale(0.8)}
+		100% {
+			filter: grayscale(1);
+			opacity: 0.7;
+			transform: scale(0.8);
+		}
 	}
 </style>

@@ -51,7 +51,7 @@
 				style:left="{vertexList[index].x * 1.1}px"
 				style:bottom="{vertexList[index].y * 1.1}px"
 			>
-				<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true}/>
+				<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true} />
 			</span>
 		{/each}
 	</span>

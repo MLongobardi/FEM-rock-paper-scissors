@@ -7,7 +7,7 @@
 	let hiding = true;
 	setTimeout(() => {
 		hiding = false;
-	}, SETTINGS.RESULT_DELAY * 0.9);
+	}, SETTINGS.RESULT_DELAY * 0.8);
 </script>
 
 <div class="result-wrapper" in:fade>
@@ -18,9 +18,10 @@
 			radius={false}
 			pickerVersion={false}
 			isWinner={$gameStore.matchLogic.winner == "PLAYER"}
+			isDraw={$gameStore.matchLogic.winner == "DRAW"}
 		/>
 	</div>
-
+	
 	<div class="house pick">
 		<h3 class="pick-header">THE HOUSE PICKED</h3>
 		<Symbol
@@ -51,7 +52,7 @@
 		gap: 2em;
 		font-size: 16px;
 		max-width: 25em;
-		margin: 0 auto;
+		margin: 2em auto;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .result-wrapper {
 		grid-template-areas: "player result house";

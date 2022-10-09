@@ -1,19 +1,20 @@
 <script>
-    export let func, disable = false;
+	export let func,
+		disable = false;
 </script>
 
 <button on:click={func} disabled={disable}>
-    <slot></slot>
+	<slot />
 </button>
 
 <style>
-    button {
+	button {
 		background: transparent;
 		border: 2px solid var(--header-outline);
-		border-radius: 10px;
+		border-radius: 0.6em;
 		color: white;
-		padding: 10px 12px;
-		margin: 2px 10px;
+		padding: 0.6em 0.75em;
+		margin: 0.15em 0.6em;
 		font-size: inherit;
 		cursor: pointer;
 	}
