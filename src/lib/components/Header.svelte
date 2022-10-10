@@ -6,6 +6,7 @@
 	$: logoMod = $gameStore.bonusMode ? "-bonus" : "";
 	$: logoPath = "/images/logo" + logoMod + ".svg";
 </script>
+
 <!--
 <header>
 	<div class="logo-box">
@@ -25,7 +26,7 @@
 <header>
 	<img alt="logo{logoMod}" src={logoPath} />
 	<span>
-	<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>Change!</Button>
+		<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>Change!</Button>
 	</span>
 	<div class="score-box">
 		<span class="score-text">SCORE</span>
@@ -34,7 +35,6 @@
 </header>
 
 <style>
-	
 	header {
 		display: grid;
 		grid-template-areas: "logo score" "button button";
@@ -53,7 +53,7 @@
 		grid-template-rows: 1fr;
 		gap: 2.5em;
 	}
-	
+
 	img {
 		height: 100%;
 	}

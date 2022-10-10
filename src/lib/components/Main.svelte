@@ -41,8 +41,7 @@
 <style>
 	main {
 		color: white;
-		margin: 10px;
-		padding: 10px;
+		/*min-height: 60vh;*/
 	}
 
 	.picker-wrapper {
@@ -59,13 +58,13 @@
 		transition: width 0.1s; /*sizeDiscr doesn't update on load without this*/
 	}
 	:global(.media-S) .picker-wrapper.discr {
-		width: 300px;
+		width: 400px;
 	}
 	:global(.media-M) .picker-wrapper.discr {
-		width: 384px;
+		width: 450px;
 	}
 	:global(.media-L) .picker-wrapper.discr {
-		width: 496px;
+		width: 500px;
 	}
 	:global(.media-XL) .picker-wrapper.discr {
 		width: var(--max-width);

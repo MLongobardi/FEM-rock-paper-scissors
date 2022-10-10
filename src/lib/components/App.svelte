@@ -17,6 +17,13 @@
 
 	import { gameStore } from "$scripts/store.js";
 	import { SETTINGS } from "$lib/my-config.js";
+	import { onMount } from "svelte";
+
+	//check localStorage for existing save and loads it
+	onMount(() => {
+		const loaded = JSON.parse(localStorage.getItem("rpsSave"));
+		gameStore.loadSave(loaded);
+	});
 
 	let innerWidth; //binded to window.innerWidth
 	let mediaNames = Object.keys(SETTINGS.DISCRETE_BREAKPOINTS).map((name) => "media-" + name);
@@ -32,13 +39,13 @@
 			*/
 			gameStore.setScreen(innerWidth);
 		}
-		
+
 		//finds index of current media
 		let i = -1;
 		breakpoints.forEach((el) => {
 			if (innerWidth >= el) i++;
 		});
-		
+
 		if (!document.body.classList.contains(mediaNames[i])) {
 			document.body.classList.remove(...mediaNames);
 			if (mediaNames[i]) {
@@ -50,18 +57,23 @@
 
 <svelte:window bind:innerWidth />
 <svelte:head>
-	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700"	rel="stylesheet"/>
+	<link
+		href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
 <!--temp-->
 <div style="text-align: center; color: white; margin-bottom: -2em;">
-	<span class="temp">/*TEMP*/ current media is:</span><br>
+	<span class="temp">/*TEMP*/ current media is:</span><br />
 	<span>/*TEMP*/ screen size is: {innerWidth}px</span>
 </div>
 <!--end-temp-->
-<Header />
-<Main />
-<Footer />
+<div class="page">
+	<Header />
+	<Main />
+	<Footer />
+</div>
 
 <style>
 	:root {
@@ -69,17 +81,6 @@
 		--dark-text: hsl(229, 25%, 31%);
 		--score-text: hsl(229, 64%, 46%);
 		--header-outline: hsl(217, 16%, 45%);
-		--scissors-bottom: hsl(39, 89%, 49%);
-		--scissors-top: hsl(40, 84%, 53%);
-		--paper-bottom: hsl(230, 89%, 62%);
-		--paper-top: hsl(230, 89%, 65%);
-		--rock-bottom: hsl(349, 71%, 52%);
-		--rock-top: hsl(349, 70%, 56%);
-		--lizard-bottom: hsl(261, 73%, 60%);
-		--lizard-top: hsl(261, 72%, 63%);
-		--spock-bottom: hsl(189, 59%, 53%);
-		--spock-top: hsl(189, 58%, 57%);
-
 		/*
 		For the next project, add a font size here, change it as needed with media queries, and define all css sizes with rem instead of px/em.
 		However, adding the media-? classes to the body as I did is still useful when sizes aren't the only thing that changes, such as the positioning of the elements in Result.svelte.
@@ -87,7 +88,7 @@
 		Or maybe something like this??? font-size: clamp(1rem, 4vw, 3rem);
 		*/
 	}
-	
+
 	:global(body) {
 		background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 	}
@@ -97,6 +98,13 @@
 		//example of css for bigger screens
 	}
 	*/
+
+	.page {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		/*footer has flex-grow set to 1*/
+	}
 
 	/*temp*/
 	.temp::after {

@@ -1,5 +1,6 @@
 <script>
 	export let vertexList, lineWidth;
+	/*...I noticed the provided images too late*/
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg">
