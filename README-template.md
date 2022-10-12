@@ -14,9 +14,6 @@ This is a solution to the [Rock, Paper, Scissors challenge on Frontend Mentor](h
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -26,8 +23,8 @@ Users should be able to:
 
 - View the optimal layout for the game depending on their device's screen size
 - Play Rock, Paper, Scissors against the computer
-- Maintain the state of the score after refreshing the browser _(optional)_
-- **Bonus**: Play Rock, Paper, Scissors, Lizard, Spock against the computer _(optional)_
+- Maintain the state of the score after refreshing the browser
+- **Bonus**: Play Rock, Paper, Scissors, Lizard, Spock against the computer
 
 ### Screenshot
 
@@ -43,7 +40,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://github.com/MLongobardi/FEM-rock-paper-scissors)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -55,59 +52,36 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Svelte](https://svelte.dev/) - JS framework
+- [Sveltekit](https://kit.svelte.dev/) - Svelte framework
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I decided to do this challenge with Svelte to familiarize myself with this fun framework. It is also the first project I do from scratch so I learned how to create one from the console, and gave some thought on how to organize my folder structure.
 
-To see how you can add code snippets, see below:
+Because of Svelte's nature, each component has its relative HTML, CSS and JS all included in a single file. Instead of repeating the same, multiple media queries for every component, I decided to use Svelte's bind functionality to listen to window width changes, and use that to apply a class to the body depending on specific breakpoints I wrote in a config file. In this way, when writing css that determines how a component looks on larger screen sizes (with a mobile-first approach), I could do it like this:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.my-div {
+  /*rules for mobile*/
 }
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+
+:global(:is(.media-M, .media-L, .media-XL)) .my-div {
+  /*rules for larger screen sizes*/
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+This allows me to, for example, change the breakpoints in the config file, and know that the change will correctly apply everywhere, instead of having to edit every single media query in every single component. I am particularly thankful to the ```:is()``` css selector, which avoided unwieldy style names.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I noticed after a certain point that using em units and setting different font sizes for different screen sizes was an easier way to make the app responsive. In hindsight, I should have set font sizes once on the root element, and then used rem units instead of em.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Svelte tutorial](https://svelte.dev/tutorial/basics) and [Svelte docs](https://svelte.dev/docs) - For obvious reasons, it's hard to learn a new framework without any kind of instruction. I found these to be really well done, though I still need to finish a few sections.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- GitHub - [@Mlongobardi](https://github.com/MLongobardi)
+- Frontend Mentor - [@Mlongobardi](https://www.frontendmentor.io/profile/MLongobardi)
