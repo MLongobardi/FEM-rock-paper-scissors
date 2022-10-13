@@ -11,7 +11,7 @@
 
 <footer>
 	<div class="buttons-holder">
-		<Button func={gameStore.resetScore}>RESET SCORE</Button>
+		<Button func={gameStore.resetScore}>RESET</Button>
 		<Button func={toggleRules}>RULES</Button>
 	</div>
 	<p class="attribution">
@@ -29,10 +29,6 @@
 
 <style>
 	footer {
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
-		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -40,17 +36,15 @@
 
 	.buttons-holder {
 		display: flex;
-		width: 100%;
+		width: 95%;
 		justify-content: center;
-		max-width: 280px;
-		font-size: 15px;
+		max-width: 300px;
 		margin: 0 auto;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder {
 		justify-content: space-between;
-		margin-top: -1.5em;
-		font-size: 18px;
-		max-width: 1200px;
+		margin-top: -2em;
+		max-width: inherit;
 	}
 
 	.buttons-holder :global(button) {
@@ -58,7 +52,8 @@
 	}
 
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder :global(button) {
-		flex-basis: 12%;
+		flex-basis: auto;
+		width: 9em;
 	}
 
 	.overlay {
@@ -77,9 +72,14 @@
 	}
 
 	.attribution {
+		margin-top: 3em;
+		margin-bottom: 0.2em;
 		color: white;
 		font-size: 0.7em;
 		text-align: center;
+	}
+	:global(:is(.media-M, .media-L, .media-XL)) .attribution {
+		margin-top: 0;
 	}
 	.attribution a {
 		color: hsl(228, 45%, 44%);

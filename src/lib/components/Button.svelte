@@ -1,6 +1,5 @@
 <script>
-	export let func,
-		disable = false;
+	export let func, disable = false;
 </script>
 
 <button on:click={func} disabled={disable}>
@@ -13,10 +12,11 @@
 		border: 2px solid var(--header-outline);
 		border-radius: 0.6em;
 		color: white;
-		padding: 0.6em 0.75em;
-		margin: 0.15em 0.6em;
+		padding: 0.6em;
+		margin: 0.15em 0.4em;
 		font-size: inherit;
 		cursor: pointer;
+		letter-spacing: 0.1em;
 	}
 	button:hover {
 		background: white;

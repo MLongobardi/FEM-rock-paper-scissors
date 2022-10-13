@@ -7,161 +7,96 @@
 	$: logoPath = "/images/logo" + logoMod + ".svg";
 </script>
 
-<!--
-<header>
-	<div class="logo-box">
-		<img alt="logo{logoMod}" src={logoPath} />
-	</div>
-	
-	<div class="button-box">
-		<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>Change!</Button>
-	</div>
-	
-	<div class="score-box">
-		<span class="score-text">SCORE</span>
-		<span class="score-number">{$gameStore.getPoints}</span>
-	</div>
-</header>
--->
+<span class="spacer-1" />
 <header>
 	<img alt="logo{logoMod}" src={logoPath} />
-	<span>
-		<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>Change!</Button>
-	</span>
 	<div class="score-box">
-		<span class="score-text">SCORE</span>
+		<h4 class="score-text">SCORE</h4>
 		<span class="score-number">{$gameStore.getPoints}</span>
 	</div>
 </header>
+<span class="spacer-2" />
+<div class="button-holder">
+	<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>CHANGE</Button>
+</div>
 
 <style>
 	header {
 		display: grid;
-		grid-template-areas: "logo score" "button button";
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 2fr 1fr;
-		row-gap: 0.5em;
-		border: 0.15em solid var(--header-outline);
-		border-radius: 0.8em;
-		margin: 1em auto;
+		grid-template-areas: "logo . score";
+		grid-template-columns: 3.2em 1fr 5em;
+		width: 75%;
+		border: 3px solid var(--header-outline);
+		border-radius: 0.5em;
+		margin: 0 auto;
 		padding: 0.7em;
-		max-width: 800px;
+		padding-left: 1.2em;
+		max-width: 650px;
 	}
-	:global(:is(.media-S, .media-M, .media-L, .media-XL)) header {
-		grid-template-areas: "logo button score";
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 1fr;
-		gap: 2.5em;
+	:global(:is(.media-M, .media-L, .media-XL)) header {
+		grid-template-columns: 4.5em 1fr 6em
+	}
+
+	.spacer-1, .spacer-2 {
+		flex-basis: 1.9em;
+		min-height: 0.3em;
+		flex-shrink: 1;
+	}
+	.spacer-2 {
+		flex-basis: 0.8em;
 	}
 
 	img {
-		height: 100%;
-	}
-
-	span {
-		grid-area: button;
+		width: 100%;
+		height: auto;
 		align-self: center;
-		justify-self: center;
-		font-size: 0.7em;
 	}
 
 	.score-box {
 		grid-area: score;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		text-align: center;
 		background: white;
-		align-self: stretch;
-		border-radius: 0.4em;
-		font-weight: bold;
-		letter-spacing: 0.1em;
+		border-radius: 0.3em;
+		padding-top: 0.8em;
+		padding-bottom: 0.2em;
 	}
-	.score-text {
-		color: var(--score-text);
-		margin-top: 0.2em;
-	}
-	.score-number {
-		color: var(--dark-text);
-		font-size: 2.6em;
-	}
-	/**********************
-	header {
-		//display: flex;
-		//justify-content: space-between;
-		//align-items: center;
-		
-		display: grid;
-		grid-template-areas: "logo score" "button button";
-		grid-template-rows: 2fr 1fr;
-		place-content: center;
-		
-
-		border: 0.15em solid var(--header-outline);
-		color: whitesmoke;
-		border-radius: 0.8em;
-		margin: 1.4em auto;
-		padding: 0.9em 1.4em;
-		max-width: 25em;
-		height: 4em;
-		font-size: 16px;
-	}
-	:global(:is(.media-S, .media-M, .media-L, .media-XL)) header {
-		grid-template-areas: "logo button score";
-		grid-template-rows: 1fr;
-		gap: 2.5em;
+	:global(:is(.media-M, .media-L, .media-XL)) .score-box {
+		padding: 0.5em 0;
 	}
 	
-	.logo-box {
-		grid-area: logo;
-		//height: 100%;
-		//width: 8em;
-	}
-
-	img {
-		height: 100%;
-		width: auto;
-	}
-
-	.button-box {
-		display: flex;
-		place-content: center;
-		grid-area: button;
-		font-size: 0.7em;
-	}
-
-	.score-box {
-		grid-area: score;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		background: white;
-		align-self: stretch;
-		border-radius: 0.4em;
-		font-weight: bold;
-		width: 8em;
-		letter-spacing: 0.1em;
-	}
 	.score-text {
 		color: var(--score-text);
-		margin-top: 0.2em;
+		margin: 0;
+		font-size: 0.65em;
+		letter-spacing: 0.1em;
 	}
 	.score-number {
 		color: var(--dark-text);
 		font-size: 2.6em;
+		font-weight: bold;
 	}
-	*/
+	.button-holder {
+		height: 0;
+	}
+	:global(:is(.media-L, .media-XL)) .button-holder {
+		height: auto;
+	}
+	.button-holder :global(button) {
+		display: block;
+		margin: 0 auto;
+		width: 9em;
+	}
+
 	:global(.media-S) header {
-		font-size: 19px;
+		font-size: 18px;
 	}
 	:global(.media-M) header {
-		font-size: 22px;
+		font-size: 21px;
 	}
 	:global(.media-L) header {
-		font-size: 27px;
+		font-size: 23px;
 	}
 	:global(.media-XL) header {
-		font-size: 33px;
+		font-size: 27px;
 	}
 </style>

@@ -7,7 +7,7 @@ export const SETTINGS = {
 		XL: 1200, //desktop
 	},
 	MIN_SYMBOL_HOLDER: 300, //min width for the symbol container
-	MAX_SYMBOL_HOLDER: 550, //max width for the symbol container
+	MAX_SYMBOL_HOLDER: 450, //max width for the symbol container
 	HACK: true, //enforces design look
 	VERTEX_PRECISION: 2, //number of decimal digits in vertexFinder's coordinates
 	RESULT_DELAY: 900, //animation delay for game result

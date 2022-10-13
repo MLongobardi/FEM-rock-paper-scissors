@@ -58,17 +58,17 @@
 <svelte:window bind:innerWidth />
 <svelte:head>
 	<link
-		href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:wght@600;700"
+		href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700"
 		rel="stylesheet"
 	/>
 </svelte:head>
 
-<!--temp-->
+<!--temp--
 <div style="text-align: center; color: white; margin-bottom: -2em;">
 	<span class="temp">/*TEMP*/ current media is:</span><br />
 	<span>/*TEMP*/ screen size is: {innerWidth}px</span>
 </div>
-<!--end-temp-->
+--end-temp-->
 <div class="page">
 	<Header />
 	<Main />
@@ -93,16 +93,10 @@
 		background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 	}
 
-	/*
-	:global(:is(.media-M, .media-L, .media-XL)) div {
-		//example of css for bigger screens
-	}
-	*/
-
 	.page {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
+		height: 100vh;
 		/*footer has flex-grow set to 1*/
 	}
 

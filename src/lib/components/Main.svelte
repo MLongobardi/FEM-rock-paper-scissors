@@ -10,7 +10,8 @@
 	import { gameStore } from "$scripts/store.js";
 	import { SETTINGS } from "$lib/my-config.js";
 
-	let sizeDiscr = SETTINGS.MIN_SYMBOL_HOLDER;
+	let sizeDiscr = SETTINGS.MIN_SYMBOL_HOLDER; //default value
+	let incr = (SETTINGS.MAX_SYMBOL_HOLDER - SETTINGS.MIN_SYMBOL_HOLDER) / Object.keys(SETTINGS.DISCRETE_BREAKPOINTS).length;
 </script>
 
 <main>
@@ -28,6 +29,9 @@
 				bind:clientWidth={sizeDiscr}
 				class="picker-wrapper discr"
 				style:--min-width="{SETTINGS.MIN_SYMBOL_HOLDER}px"
+				style:--small-width="{SETTINGS.MIN_SYMBOL_HOLDER + incr}px"
+				style:--medium-width="{SETTINGS.MIN_SYMBOL_HOLDER + 2 * incr}px"
+				style:--large-width="{SETTINGS.MIN_SYMBOL_HOLDER + 3 * incr}px"
 				style:--max-width="{SETTINGS.MAX_SYMBOL_HOLDER}px"
 			>
 				<SymbolPicker symbolHolderSize={sizeDiscr} />
@@ -41,7 +45,12 @@
 <style>
 	main {
 		color: white;
-		/*min-height: 60vh;*/
+		flex-grow: 1; /*child of .page in App.svelte*/
+		display: flex;
+		align-items: center;
+	}
+	:global(:is(.media-M,.media-L,.media-XL)) main{
+		margin-top: 1.2em; /*Offsetting anchors in SymbolPicker.svelte by *1.1 causes the top symbol to overflow*/
 	}
 
 	.picker-wrapper {
@@ -58,13 +67,13 @@
 		transition: width 0.1s; /*sizeDiscr doesn't update on load without this*/
 	}
 	:global(.media-S) .picker-wrapper.discr {
-		width: 400px;
+		width: var(--small-width);
 	}
 	:global(.media-M) .picker-wrapper.discr {
-		width: 450px;
+		width: var(--medium-width);
 	}
 	:global(.media-L) .picker-wrapper.discr {
-		width: 500px;
+		width: var(--large-width);
 	}
 	:global(.media-XL) .picker-wrapper.discr {
 		width: var(--max-width);

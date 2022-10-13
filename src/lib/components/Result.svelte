@@ -97,19 +97,19 @@
 	}
 
 	.result h2 {
-		font-size: 1.3em;
-		margin: 0.3em 0;
+		font-size: 1.6em;
+		margin: 0.3em;
+		font-weight: 600;
 	}
 
 	button {
 		background: white;
-		padding: 0.7em 0;
+		padding: 0.9em 0;
 		border: none;
-		border-radius: 0.3em;
-		font-size: 0.4em;
+		border-radius: 0.5em;
+		font-size: 0.5em;
 		align-self: stretch;
 		color: var(--dark-text);
-		font-weight: bold;
 		letter-spacing: 0.1em;
 	}
 
