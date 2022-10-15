@@ -38,7 +38,7 @@
 		display: flex;
 		width: 95%;
 		justify-content: center;
-		max-width: 300px;
+		max-width: 280px;
 		margin: 0 auto;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder {
@@ -53,7 +53,7 @@
 
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder :global(button) {
 		flex-basis: auto;
-		width: 9em;
+		width: 8em;
 	}
 
 	.overlay {
@@ -65,7 +65,7 @@
 		width: 100vw;
 		height: 100vh;
 		background: rgba(0, 0, 0, 0.6);
-		z-index: 1;
+		z-index: 2;
 	}
 	.overlay.hidden {
 		display: none;

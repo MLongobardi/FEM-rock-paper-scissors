@@ -20,7 +20,7 @@
 
 	export let symbolHolderSize;
 
-	$: symbolRadius = symbolHolderSize / 6;
+	$: symbolRadius = symbolHolderSize / ($gameStore.bonusMode ? 6.1 : 4.8);
 	$: anchorHolderRadius = (symbolHolderSize - symbolRadius * 2) / 2;
 	$: lineWidth = anchorHolderRadius / 7;
 	$: vertexList = vertexFinder($gameStore.symbolNames.length, anchorHolderRadius); //values are altered to make the symbol order conform to the design, can toggle in my-config.js

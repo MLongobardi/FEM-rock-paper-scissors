@@ -77,10 +77,10 @@
 	}
 
 	.symbol-inner {
-		background: white;
+		background: whitesmoke;
 		border-radius: 100%;
-		height: 75%;
-		width: 75%;
+		height: 76%;
+		width: 76%;
 		box-shadow: inset 0px 0.3em 2px 0 rgba(0, 0, 0, 0.2);
 	}
 

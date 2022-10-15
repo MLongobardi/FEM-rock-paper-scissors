@@ -9,7 +9,7 @@
 <style>
 	button {
 		background: transparent;
-		border: 2px solid var(--header-outline);
+		border: 2px solid rgba(255,255,255,0.55);
 		border-radius: 0.6em;
 		color: white;
 		padding: 0.6em;

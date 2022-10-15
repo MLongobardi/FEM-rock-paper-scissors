@@ -25,11 +25,12 @@ export function vertexFinder(n, r) {
 	let d = (2 * Math.PI) / n;
 
 	for (let i = 0; i < n; i++) {
-		vertices.push({
+		let newVertex = {
 			x: rounder(r * Math.cos(th + i * d)),
 			y: rounder(r * Math.sin(th + i * d)),
 			id: i + 1,
-		});
+		};
+		vertices = [...vertices, newVertex]
 	}
 	
 	return hack(vertices);

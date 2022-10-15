@@ -8,7 +8,7 @@
 </script>
 
 <span class="spacer-1" />
-<header>
+<header class:bonus={$gameStore.bonusMode}>
 	<img alt="logo{logoMod}" src={logoPath} />
 	<div class="score-box">
 		<h4 class="score-text">SCORE</h4>
@@ -24,17 +24,20 @@
 	header {
 		display: grid;
 		grid-template-areas: "logo . score";
-		grid-template-columns: 3.2em 1fr 5em;
+		grid-template-columns: 5.5em 1fr 5em;
 		width: 75%;
 		border: 3px solid var(--header-outline);
 		border-radius: 0.5em;
 		margin: 0 auto;
-		padding: 0.7em;
-		padding-left: 1.2em;
+		padding: 0.5em;
+		padding-left: 1.1em;
 		max-width: 650px;
 	}
+	header.bonus {
+		grid-template-columns: 3.2em 1fr 5em;
+	}
 	:global(:is(.media-M, .media-L, .media-XL)) header {
-		grid-template-columns: 4.5em 1fr 6em
+		grid-template-columns: max-content 1fr 6em
 	}
 
 	.spacer-1, .spacer-2 {
@@ -45,23 +48,31 @@
 	.spacer-2 {
 		flex-basis: 0.8em;
 	}
+	:global(:is(.media-M, .media-L, .media-XL)) .spacer-1 {
+		flex-basis: 3em;
+	}
 
 	img {
-		width: 100%;
-		height: auto;
+		margin: -0.05em; /*logo has a bit of empty space on all borders except top one*/
+		margin-top: 0;
 		align-self: center;
+		width: 100%;
 	}
 
 	.score-box {
 		grid-area: score;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		text-align: center;
 		background: white;
 		border-radius: 0.3em;
 		padding-top: 0.8em;
 		padding-bottom: 0.2em;
+		margin: 0.1em;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .score-box {
-		padding: 0.5em 0;
+		padding: 0.5em 0 0.35em 0;
 	}
 	
 	.score-text {
@@ -72,19 +83,21 @@
 	}
 	.score-number {
 		color: var(--dark-text);
-		font-size: 2.6em;
+		font-size: 2.3em;
 		font-weight: bold;
 	}
 	.button-holder {
 		height: 0;
+		z-index: 1;
 	}
 	:global(:is(.media-L, .media-XL)) .button-holder {
 		height: auto;
+		z-index: auto;
 	}
 	.button-holder :global(button) {
 		display: block;
 		margin: 0 auto;
-		width: 9em;
+		width: 8em;
 	}
 
 	:global(.media-S) header {

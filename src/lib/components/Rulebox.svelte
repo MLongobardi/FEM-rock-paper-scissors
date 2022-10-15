@@ -2,7 +2,7 @@
 	export let bonusMode, closeFunc;
 </script>
 
-<div class="rule-box">
+<div class="rule-box" class:bonus={bonusMode}>
 	<h1 class="title">RULES</h1>
 
 	{#if bonusMode}
@@ -24,16 +24,22 @@
 		height: 100%;
 		background: white;
 		color: var(--dark-text);
-		z-index: 2;
+		padding-top: 2.5em;
+		padding-bottom: 1.5em;
+		box-sizing: border-box;
+		z-index: 3;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .rule-box {
 		grid-template-areas: "title close" "image image";
-		grid-gap: 1.25em;
+		grid-gap: 2.5em;
 		justify-items: normal;
 		width: auto;
 		height: auto;
 		border-radius: 0.6em;
 		padding: 1.9em;
+	}
+	:global(:is(.media-M, .media-L, .media-XL)) .rule-box.bonus {
+		grid-gap: 1.25em;
 	}
 
 	.title {
@@ -47,6 +53,7 @@
 
 	.close-button {
 		grid-area: close;
+		padding-top: 1em;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .close-button {
 		justify-self: end;

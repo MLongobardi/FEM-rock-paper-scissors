@@ -45,7 +45,13 @@
 		breakpoints.forEach((el) => {
 			if (innerWidth >= el) i++;
 		});
-
+		
+		/**
+		 * A better approach for future projects would be that bigger screen sizes apply all media-X classes from the smallest to the current one
+		 * So that ":global(.media-M) .myDiv" would target all screen sizes that are at media-M or bigger
+		 * Instead of having to do ":global(:is(.media-M, [...all the bigger ones])) .my-div"
+		 * It would also make things easier after adding a new breakpoint in the config file
+		*/
 		if (!document.body.classList.contains(mediaNames[i])) {
 			document.body.classList.remove(...mediaNames);
 			if (mediaNames[i]) {
@@ -63,12 +69,6 @@
 	/>
 </svelte:head>
 
-<!--temp--
-<div style="text-align: center; color: white; margin-bottom: -2em;">
-	<span class="temp">/*TEMP*/ current media is:</span><br />
-	<span>/*TEMP*/ screen size is: {innerWidth}px</span>
-</div>
---end-temp-->
 <div class="page">
 	<Header />
 	<Main />
@@ -99,22 +99,4 @@
 		height: 100vh;
 		/*footer has flex-grow set to 1*/
 	}
-
-	/*temp*/
-	.temp::after {
-		content: " none, technically XS";
-	}
-	:global(.media-S) .temp::after {
-		content: " S";
-	}
-	:global(.media-M) .temp::after {
-		content: " M";
-	}
-	:global(.media-L) .temp::after {
-		content: " L";
-	}
-	:global(.media-XL) .temp::after {
-		content: " XL";
-	}
-	/*end-temp*/
 </style>
