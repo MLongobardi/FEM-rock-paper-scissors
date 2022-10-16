@@ -44,7 +44,7 @@
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder {
 		justify-content: space-between;
 		margin-top: -2em;
-		max-width: inherit;
+		max-width: 1300px;
 	}
 
 	.buttons-holder :global(button) {
@@ -79,7 +79,7 @@
 		text-align: center;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .attribution {
-		margin-top: 0;
+		margin-top: 1em;
 	}
 	.attribution a {
 		color: hsl(228, 45%, 44%);

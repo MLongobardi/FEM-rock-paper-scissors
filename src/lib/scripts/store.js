@@ -86,8 +86,7 @@ function createStore() {
 	};
 
 	tempStore.loadSave = (save) => {
-		//gives default values to mode and points whether save is an object or null/undefined
-		const { mode = 0, points = [0, 0] } = save || {};
+		const { mode = 0, points = [0, 0] } = save || {}; //gives default values to mode and points whether save is an object or null/undefined
 		tempStore.update((draft) => {
 			draft.bonusMode = mode;
 			draft.currentPoints = points;

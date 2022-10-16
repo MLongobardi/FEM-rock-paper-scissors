@@ -37,7 +37,7 @@
 		grid-template-columns: 3.2em 1fr 5em;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) header {
-		grid-template-columns: max-content 1fr 6em
+		grid-template-columns: max-content 1fr 6em;
 	}
 
 	.spacer-1, .spacer-2 {
@@ -74,7 +74,7 @@
 	:global(:is(.media-M, .media-L, .media-XL)) .score-box {
 		padding: 0.5em 0 0.35em 0;
 	}
-	
+
 	.score-text {
 		color: var(--score-text);
 		margin: 0;
@@ -90,7 +90,7 @@
 		height: 0;
 		z-index: 1;
 	}
-	:global(:is(.media-L, .media-XL)) .button-holder {
+	:global(:is(.media-M, .media-L, .media-XL)) .button-holder {
 		height: auto;
 		z-index: auto;
 	}

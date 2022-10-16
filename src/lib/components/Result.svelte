@@ -21,7 +21,7 @@
 			isDraw={$gameStore.matchLogic.winner == "DRAW"}
 		/>
 	</div>
-	
+
 	<div class="house pick">
 		<h3 class="pick-header">THE HOUSE PICKED</h3>
 		<Symbol
@@ -48,15 +48,19 @@
 	.result-wrapper {
 		display: grid;
 		grid-template-areas: "player house" "result result";
-		place-content: center;
-		gap: 2em;
-		font-size: 16px;
-		max-width: 25em;
-		margin: 2em auto;
+		gap: 4em;
+		font-size: 14px;
+		margin: 2.5em auto 0 auto;
+	}
+	:global(.media-S) .result-wrapper {
+		row-gap: 0;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .result-wrapper {
+		align-self: start;
 		grid-template-areas: "player result house";
 		grid-template-columns: repeat(3, max-content);
+		margin-top: 0.5em;
+		gap: 2.2em;
 	}
 
 	.pick {
@@ -64,7 +68,7 @@
 		flex-direction: column-reverse;
 		align-items: center;
 		grid-area: player;
-		gap: 1.5em;
+		gap: 2em;
 	}
 	.pick.house {
 		grid-area: house;
@@ -74,9 +78,13 @@
 	}
 
 	.pick-header {
-		font-size: 0.65em;
+		font-size: 1em;
+		font-weight: normal;
 		letter-spacing: 0.1em;
 		margin: 0;
+	}
+	:global(:is(.media-M, .media-L, .media-XL)) .pick-header {
+		font-size: 0.75em;
 	}
 
 	.result {
@@ -94,33 +102,44 @@
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .result {
 		font-size: 1em;
+		margin-top: 1.6em;
 	}
 
 	.result h2 {
-		font-size: 1.6em;
-		margin: 0.3em;
+		font-size: 2em;
 		font-weight: 600;
+		margin: 0.25em 0;
+	}
+	:global(:is(.media-M, .media-L, .media-XL)) .result h2 {
+		font-size: 1.75em;
 	}
 
-	button {
+	.result button {
 		background: white;
-		padding: 0.9em 0;
+		padding: 1em 0;
 		border: none;
 		border-radius: 0.5em;
-		font-size: 0.5em;
+		font-size: 0.55em;
 		align-self: stretch;
 		color: var(--dark-text);
-		letter-spacing: 0.1em;
+		letter-spacing: 0.2em;
+	}
+	.result button:hover {
+		color: crimson;
+	}
+	:global(:is(.media-M, .media-L, .media-XL)) button {
+		padding: 0.9em 0;
+		font-size: 0.5em;
 	}
 
 	:global(.media-S) .result-wrapper {
 		font-size: 19px;
 	}
 	:global(.media-M) .result-wrapper {
-		font-size: 22px;
+		font-size: 23.5px;
 	}
 	:global(.media-L) .result-wrapper {
-		font-size: 27px;
+		font-size: 28.5px;
 	}
 	:global(.media-XL) .result-wrapper {
 		font-size: 33px;

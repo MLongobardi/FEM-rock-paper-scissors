@@ -1,25 +1,10 @@
 <script>
-	/*
-	//standard way
-	import Header from "$lib/components/Header.svelte"
-	import Main from "$lib/components/Main.svelte"
-	import Footer from "$lib/components/Footer.svelte"
-	*/
-
-	//_exporter.js OPTION 1
+	import { onMount } from "svelte";
 	import { Header, Main, Footer } from "$comps";
-
-	/*
-	//_exporter.js OPTION 2
-	import components from "$comps";
-	const { Header, Main, Footer } = components;
-	*/
-
 	import { gameStore } from "$scripts/store.js";
 	import { SETTINGS } from "$lib/my-config.js";
-	import { onMount } from "svelte";
 
-	//check localStorage for existing save and loads it
+	//checks localStorage for existing save and loads it
 	onMount(() => {
 		const loaded = JSON.parse(localStorage.getItem("rpsSave"));
 		gameStore.loadSave(loaded);
@@ -29,14 +14,15 @@
 	let mediaNames = Object.keys(SETTINGS.DISCRETE_BREAKPOINTS).map((name) => "media-" + name);
 	let breakpoints = Object.values(SETTINGS.DISCRETE_BREAKPOINTS);
 
-	//Keeps store's screenSize value updated and applies the correct class to body depending on screen size
+	/**
+	 * Keeps store's screenSize value updated (if continuous) and applies the correct class to body depending on screen size
+	 * A better approach for future projects would be that bigger screen sizes apply all media-X classes from the smallest to the current one
+	 * So that ":global(.media-M) .myDiv" would target all screen sizes that are at media-M or bigger
+	 * Instead of having to do ":global(:is(.media-M, [...all the bigger ones])) .my-div"
+	 * It would also make things easier after adding a new breakpoint in the config file
+	 */
 	$: if (innerWidth) {
 		if (SETTINGS.CONTINUOUS_RESPONSIVENESS) {
-			/*
-			If you plan to make the condition dynamic (say, checking for prefers-reduced-motion?) add:
-				document.body.classList.remove(...mediaNames);
-			here and put the code after this if block in an else
-			*/
 			gameStore.setScreen(innerWidth);
 		}
 
@@ -45,13 +31,7 @@
 		breakpoints.forEach((el) => {
 			if (innerWidth >= el) i++;
 		});
-		
-		/**
-		 * A better approach for future projects would be that bigger screen sizes apply all media-X classes from the smallest to the current one
-		 * So that ":global(.media-M) .myDiv" would target all screen sizes that are at media-M or bigger
-		 * Instead of having to do ":global(:is(.media-M, [...all the bigger ones])) .my-div"
-		 * It would also make things easier after adding a new breakpoint in the config file
-		*/
+
 		if (!document.body.classList.contains(mediaNames[i])) {
 			document.body.classList.remove(...mediaNames);
 			if (mediaNames[i]) {
@@ -82,10 +62,9 @@
 		--score-text: hsl(229, 64%, 46%);
 		--header-outline: hsl(217, 16%, 45%);
 		/*
-		For the next project, add a font size here, change it as needed with media queries, and define all css sizes with rem instead of px/em.
-		However, adding the media-? classes to the body as I did is still useful when sizes aren't the only thing that changes, such as the positioning of the elements in Result.svelte.
-		That would require having further media queries inside various components, which would be hard to standardize
-		Or maybe something like this??? font-size: clamp(1rem, 4vw, 3rem);
+		For the next project, add a font size here, change it as needed with media queries, and define all css sizes with rem instead of px/em
+		However, adding the media-X classes to the body as I did is still useful when sizes aren't the only thing that changes, such as the positioning of the elements in Result.svelte
+		Or maybe something like this? font-size: clamp([min size], 4vw, [max size]);
 		*/
 	}
 
@@ -94,9 +73,8 @@
 	}
 
 	.page {
-		display: flex;
+		display: flex; /*main has flex-grow set to 1*/
 		flex-direction: column;
 		height: 100vh;
-		/*footer has flex-grow set to 1*/
 	}
 </style>

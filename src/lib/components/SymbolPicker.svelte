@@ -1,19 +1,6 @@
 <script>
-	/*
-    //standard way
-    import Symbol from "$lib/components/Symbol.svelte"
-    import Polygon from "$lib/components/Polygon.svelte"
-    */
-
-	//_exporter.js OPTION 1
-	import { Polygon, Symbol } from "$comps";
-
-	/*
-    //_exporter.js OPTION 2
-    import components from "$comps";
-    const { Symbol, Polygon } = components;
-    */
 	import { fade } from "svelte/transition";
+	import { Polygon, Symbol } from "$comps";
 	import { gameStore } from "$scripts/store.js";
 	import { vertexFinder } from "$scripts/vertexFinder.js";
 	import { SETTINGS } from "$lib/my-config.js";

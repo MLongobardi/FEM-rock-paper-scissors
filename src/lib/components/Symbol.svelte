@@ -16,7 +16,7 @@
 			});
 		}
 	}
-	
+
 	let hiding = isHouse;
 	if (hiding) {
 		setTimeout(() => {
@@ -33,8 +33,8 @@
 	class:is-winner={isWinner}
 	class:is-draw={isDraw}
 	id="symbol-{name}"
-	style:width={pickerVersion ? radius * 2 + "px" : "8em"}
-	style:height={pickerVersion ? radius * 2 + "px" : "8em"}
+	style:width={pickerVersion ? radius * 2 + "px" : "9em"}
+	style:height={pickerVersion ? radius * 2 + "px" : "9em"}
 	style:background="linear-gradient(var(--{name}-top), var(--{name}-bottom))"
 	style:font-size="{pickerVersion ? radius * 0.3 : "inherit"}px"
 	style:--animation-delay={SETTINGS.RESULT_DELAY * 1.1 + "ms"}
@@ -105,6 +105,7 @@
 		animation-delay: var(--animation-delay);
 		animation-fill-mode: forwards;
 	}
+
 	.symbol.hiding {
 		background: transparent !important;
 		transform: scale(0.8);
@@ -125,11 +126,11 @@
 		}
 		66% {
 			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05),
-				0 0 0 3.6em rgba(255, 255, 255, 0.03);
+				0 0 0 4em rgba(255, 255, 255, 0.03);
 		}
 		100% {
 			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05),
-				0 0 0 3.6em rgba(255, 255, 255, 0.03), 0 0 0 5.4em rgba(255, 255, 255, 0.02);
+				0 0 0 4em rgba(255, 255, 255, 0.03), 0 0 0 6.5em rgba(255, 255, 255, 0.02);
 		}
 	}
 

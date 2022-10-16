@@ -1,7 +1,7 @@
 import { SETTINGS } from "$lib/my-config.js";
 
 export function vertexFinder(n, r) {
-	//vertices of regular polygon with n sides inscribed in circle of radius r, assuming origin is at center and one vertex is on the y axis
+	//finds vertices of regular polygon with n sides inscribed in circle of radius r, assuming origin is at center and one vertex is on the y axis
 
 	function rounder(num) {
 		return (

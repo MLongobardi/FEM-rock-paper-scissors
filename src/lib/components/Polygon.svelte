@@ -1,9 +1,10 @@
 <script>
-	export let vertexList, lineWidth;
 	/**
-	*Lesson learned, look at ALL the provided images before starting to code.
-	*At least if I decide to expand this project later with more symbols, this code will support that.
-	*/
+	 * Lesson learned, look at ALL the provided images before starting to code.
+	 * At least if I decide to expand this project later with more symbols, this code will support that.
+	 */
+
+	export let vertexList, lineWidth;
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg">

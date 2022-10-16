@@ -1,7 +1,4 @@
-//OPTION 1
-//Works, the problem is I need to write these on my own
-//The best possible way would be to make the compiler generate these lines on its own
-//I have no idea how to do that though
+//Normally you need to import Svelte components one by one, this allows me to import many at once in a single line and all from the same source.
 
 export { default as App } from "./App.svelte";
 export { default as Header } from "./Header.svelte";
@@ -14,27 +11,25 @@ export { default as Result } from "./Result.svelte";
 export { default as Button } from "./Button.svelte";
 export { default as Rulebox } from "./Rulebox.svelte";
 
-/*
-//OPTION 2
-//Works, but I have no idea if there are some efficiency issues
-//For example, it's possible that I am importing all the components rather than only the ones I actually use
-//I hope Svelte is smarter than me
+/***************************************************************
+ * I tried to come up with an alternative that wouldn't require me to write the export for each component by hand.
+ * Technically I managed to get it to work, being able to import components like this:
+ * * import components from "$comps";
+ * * const { Header, Main, Footer } = components;
+ * But there are many issues: it crashes when I edit some files (like my-config.js), and I have to refresh the page to see the result of some code edits.
+ * Also I'm not knowledgeable enough of the inner workings of Svelte/Sveltekit to know this doesn't mess up something, even if it worked properly. 
 
-//Actually, it fails to load components when vite triggers some reloads, such as when I edit my-config.js
-//But that should only be a problem for when I run npm run dev -- --open right? Right?
-
-//No, it also forces me to refresh the page to see some changes, so it's too annoying
 const modules = import.meta.glob("./*.svelte", { eager: true });
 const components = {};
 
 for (const path in modules) {
 	let name = path.replace("./", "").replace(".svelte", "");
-    if (name != "App") {
-        //for some reason it doesn't work with App
-        //it took me a whole day to find out that was the problem
+	if (name != "App") {
+	    //for some reason it doesn't work with App.svelte, probably because it's the highest level component?
+	    //it took me a day to find out that was the problem, I kept getting "Cannot access 'default' before initialization"
         components[name] = modules[path].default;
-    }
+	}
 }
 
 export default components;
-*/
+**************************************************************/
