@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/MLongobardi/FEM-rock-paper-scissors)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/MLongobardi/FEM-rock-paper-scissors](https://github.com/MLongobardi/FEM-rock-paper-scissors)
+- Live Site URL: [https://fem-rock-paper-scissors-lizard-spock-cyxnppnvi-mlongobardi.vercel.app/](https://fem-rock-paper-scissors-lizard-spock-cyxnppnvi-mlongobardi.vercel.app/)
 
 ## My process
 
@@ -67,7 +67,7 @@ This allows me to, for example, change the breakpoints in the config file, and k
 
 ### Continued development
 
-I noticed after a certain point that using em units and setting different font sizes for different screen sizes was an easier way to make the app responsive. In hindsight, I should have set font sizes once on the root element, and then used rem units instead of em.
+I noticed after a certain point that using em units and setting different font sizes for different screen sizes was an easier way to make the app responsive. In hindsight, I should have set font sizes once on the root element, and then used rem units instead of em. I should also account not only for the screen's width, but its height as well.
 
 ### Useful resources
 
