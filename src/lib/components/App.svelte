@@ -1,4 +1,5 @@
 <script>
+	import { dev } from "$app/environment" //test
 	import { onMount } from "svelte";
 	import { Header, Main, Footer } from "$comps";
 	import { gameStore } from "$scripts/store.js";
@@ -48,6 +49,10 @@
 		rel="stylesheet"
 	/>
 </svelte:head>
+
+{#if dev}
+	<div style="color: white; height: 0;">DEV MODE!</div>
+{/if}
 
 <div class="page">
 	<Header />

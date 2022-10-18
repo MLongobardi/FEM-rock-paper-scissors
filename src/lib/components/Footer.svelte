@@ -11,7 +11,7 @@
 
 <footer>
 	<div class="buttons-holder">
-		<Button func={gameStore.resetScore}>RESET</Button>
+		<Button func={gameStore.resetScore} disable={$gameStore.getPoints == 0 || !$gameStore.matchLogic.isPicker}>RESET</Button>
 		<Button func={toggleRules}>RULES</Button>
 	</div>
 	<p class="attribution">

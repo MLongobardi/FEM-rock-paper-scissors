@@ -119,7 +119,7 @@
 	.symbol.hiding .symbol-inner img {
 		display: none;
 	}
-
+	
 	@keyframes winner {
 		33% {
 			box-shadow: inset 0px -0.333em 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1.8em rgba(255, 255, 255, 0.05);

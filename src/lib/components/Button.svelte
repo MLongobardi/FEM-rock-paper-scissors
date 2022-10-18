@@ -32,5 +32,6 @@
 		background: transparent;
 		color: var(--header-outline);
 		border: 2px solid var(--header-outline);
+		-webkit-tap-highlight-color: transparent;
 	}
 </style>

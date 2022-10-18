@@ -1,5 +1,5 @@
 <script>
-	import { fade } from "svelte/transition";
+	import { scale } from "svelte/transition";
 	import { Polygon, Symbol } from "$comps";
 	import { gameStore } from "$scripts/store.js";
 	import { vertexFinder } from "$scripts/vertexFinder.js";
@@ -20,12 +20,14 @@
 	}
 </script>
 
+{#key $gameStore.bonusMode}
 <div
 	class="anchor-holder"
 	style:width="{anchorHolderRadius * 2}px"
 	style:height="{anchorHolderRadius * 2}px"
-	in:fade
+	in:scale={{delay: 200, duration: 500, start: 0.5}}
 >
+	
 	<span
 		class="anchor-origin"
 		style:--variable-top={$gameStore.symbolNames.length == 3 ? "40%" : "50%"}
@@ -38,15 +40,19 @@
 				style:left="{vertexList[index].x * 1.1}px"
 				style:bottom="{vertexList[index].y * 1.1}px"
 			>
+			<!--{#key $gameStore.bonusMode}-->
 				<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true} />
+			<!--{/key}-->
 			</span>
 		{/each}
 	</span>
 </div>
+{/key}
 
 <style>
 	.anchor-holder {
 		border-radius: 100%;
+		transform: scale(1); /*the transition makes a jump without this when not in bonus mode*/
 	}
 
 	.anchor-origin {

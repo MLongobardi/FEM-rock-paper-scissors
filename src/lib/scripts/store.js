@@ -7,6 +7,7 @@ There should be some code here to check I think LocalStorage, if there isn't any
 const cleanState = {
 	bonusMode: 0, //0==>three symbols, 1==>five symbols
 	currentPoints: [0, 0], //first is normal mode points, second is bonus mode points
+	test: 0,
 	matchLogic: {
 		isPicker: true,
 		playerSymbol: "",
@@ -33,6 +34,7 @@ function createStore() {
 	tempStore.switchMode = () => {
 		tempStore.update((draft) => {
 			draft.bonusMode = 1 - draft.bonusMode; //toggles 0 and 1
+			draft.test++;
 			return draft;
 		});
 		tempStore.saveGame();
@@ -41,6 +43,7 @@ function createStore() {
 	tempStore.resetScore = () => {
 		tempStore.update((draft) => {
 			draft.currentPoints[draft.bonusMode] = 0;
+			draft.test++;
 			return draft;
 		});
 	};
@@ -60,6 +63,7 @@ function createStore() {
 					draft.matchLogic.winner = "HOUSE";
 					draft.currentPoints[draft.bonusMode]--;
 				}
+				draft.test++;
 			} else {
 				draft.matchLogic.winner = "DRAW";
 			}

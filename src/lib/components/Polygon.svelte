@@ -24,8 +24,8 @@
 <style>
 	svg {
 		position: absolute;
-		width: 1px;
-		height: 1px;
+		width: 1em;
+		height: 1em;
 		overflow: visible;
 	}
 </style>
