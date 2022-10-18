@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/MLongobardi/FEM-rock-paper-scissors](https://github.com/MLongobardi/FEM-rock-paper-scissors)
-- Live Site URL: [https://fem-rock-paper-scissors-lizard-spock-cyxnppnvi-mlongobardi.vercel.app/](https://fem-rock-paper-scissors-lizard-spock-cyxnppnvi-mlongobardi.vercel.app/)
+- Live Site URL: [https://fem-rock-paper-scissors-lizard-spock-mlongobardi.vercel.app/](https://fem-rock-paper-scissors-lizard-spock-mlongobardi.vercel.app/)
 
 ## My process
 
