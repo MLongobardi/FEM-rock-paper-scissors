@@ -1,13 +1,11 @@
 import { writable } from "svelte/store";
 import { whoWon } from "$scripts/whoWon.js";
+import { SETTINGS } from "$lib/my-config.js";
 
-/*
-There should be some code here to check I think LocalStorage, if there isn't anything you use cleanState, but if there is something then you use that
-*/
 const cleanState = {
 	bonusMode: 0, //0==>three symbols, 1==>five symbols
 	currentPoints: [0, 0], //first is normal mode points, second is bonus mode points
-	test: 0,
+	detectChange: 0,
 	matchLogic: {
 		isPicker: true,
 		playerSymbol: "",
@@ -34,16 +32,15 @@ function createStore() {
 	tempStore.switchMode = () => {
 		tempStore.update((draft) => {
 			draft.bonusMode = 1 - draft.bonusMode; //toggles 0 and 1
-			draft.test++;
 			return draft;
 		});
+		tempStore.updateScoreDisplay();
 		tempStore.saveGame();
 	};
 
 	tempStore.resetScore = () => {
 		tempStore.update((draft) => {
 			draft.currentPoints[draft.bonusMode] = 0;
-			draft.test++;
 			return draft;
 		});
 	};
@@ -63,7 +60,7 @@ function createStore() {
 					draft.matchLogic.winner = "HOUSE";
 					draft.currentPoints[draft.bonusMode]--;
 				}
-				draft.test++;
+				tempStore.delayPoints();
 			} else {
 				draft.matchLogic.winner = "DRAW";
 			}
@@ -96,6 +93,7 @@ function createStore() {
 			draft.currentPoints = points;
 			return draft;
 		});
+		tempStore.updateScoreDisplay();
 	};
 
 	tempStore.saveGame = () => {
@@ -105,11 +103,25 @@ function createStore() {
 			return draft;
 		});
 	};
+	
+	tempStore.updateScoreDisplay = () => {
+		tempStore.update((draft) => {
+			/*The score display listens for changes to this value to play its transition*/
+			draft.detectChange = Math.random();
+			return draft;
+		});
+	}
+	
+	tempStore.delayPoints = () => {
+		setTimeout(() => {
+			tempStore.updateScoreDisplay();
+		}, SETTINGS.RESULT_DELAY)
+	}
 
 	//remove standard store methods with object destructuring and return store
 	//eslint-disable-next-line
-	const { set, update, ...returnStore } = tempStore;
-	return returnStore; // subscribe, switchMode, resetScore, playMatch, newMatch, setScreen, loadSave, saveGame
+	const { set, update, updateScoreDisplay, ...returnStore } = tempStore;
+	return returnStore; // subscribe, switchMode, resetScore, playMatch, newMatch, setScreen, loadSave, saveGame, delayPoints
 }
 
 export const gameStore = createStore();

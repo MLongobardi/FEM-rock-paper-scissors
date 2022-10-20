@@ -1,5 +1,5 @@
 <script>
-	export let bonusMode, closeFunc;
+	export let bonusMode, close;
 </script>
 
 <div class="rule-box" class:bonus={bonusMode}>
@@ -11,7 +11,7 @@
 		<img class="rules-image" alt="rules" src="/images/image-rules.svg" />
 	{/if}
 
-	<img class="close-button" alt="rules" src="/images/icon-close.svg" on:click={closeFunc} />
+	<img class="close-button" alt="rules" src="/images/icon-close.svg" on:click={close} />
 </div>
 
 <style>

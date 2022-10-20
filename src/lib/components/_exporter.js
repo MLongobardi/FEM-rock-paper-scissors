@@ -9,7 +9,10 @@ export { default as Polygon } from "./Polygon.svelte";
 export { default as SymbolPicker } from "./SymbolPicker.svelte";
 export { default as Result } from "./Result.svelte";
 export { default as Button } from "./Button.svelte";
-export { default as Rulebox } from "./Rulebox.svelte";
+export { default as RuleBox } from "./RuleBox.svelte";
+export { default as Loading } from "./Loading.svelte";
+export { default as Overlay } from "./Overlay.svelte";
+export { default as ConfirmationBox } from "./ConfirmationBox.svelte";
 
 /***************************************************************
  * I tried to come up with an alternative that wouldn't require me to write the export for each component by hand.
@@ -18,6 +21,7 @@ export { default as Rulebox } from "./Rulebox.svelte";
  * * const { Header, Main, Footer } = components;
  * But there are many issues: it crashes when I edit some files (like my-config.js), and I have to refresh the page to see the result of some code edits.
  * Also I'm not knowledgeable enough of the inner workings of Svelte/Sveltekit to know this doesn't mess up something, even if it worked properly. 
+ * For example, it probably imports ALL components each time I call it
 
 const modules = import.meta.glob("./*.svelte", { eager: true });
 const components = {};

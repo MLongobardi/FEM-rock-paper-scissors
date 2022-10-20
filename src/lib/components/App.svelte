@@ -1,14 +1,18 @@
 <script>
-	import { dev } from "$app/environment" //test
 	import { onMount } from "svelte";
-	import { Header, Main, Footer } from "$comps";
+	import { Loading, Header, Main, Footer } from "$comps";
 	import { gameStore } from "$scripts/store.js";
 	import { SETTINGS } from "$lib/my-config.js";
+
+	let isLoading = true;
 
 	//checks localStorage for existing save and loads it
 	onMount(() => {
 		const loaded = JSON.parse(localStorage.getItem("rpsSave"));
 		gameStore.loadSave(loaded);
+		setTimeout(() => {
+			isLoading = false;
+		}, 200);
 	});
 
 	let innerWidth; //binded to window.innerWidth
@@ -50,8 +54,8 @@
 	/>
 </svelte:head>
 
-{#if dev}
-	<div style="color: white; height: 0;">DEV MODE!</div>
+{#if isLoading}
+	<Loading />
 {/if}
 
 <div class="page">
@@ -66,6 +70,7 @@
 		--dark-text: hsl(229, 25%, 31%);
 		--score-text: hsl(229, 64%, 46%);
 		--header-outline: hsl(217, 16%, 45%);
+		--background-color: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 		/*
 		For the next project, add a font size here, change it as needed with media queries, and define all css sizes with rem instead of px/em
 		However, adding the media-X classes to the body as I did is still useful when sizes aren't the only thing that changes, such as the positioning of the elements in Result.svelte
@@ -74,7 +79,7 @@
 	}
 
 	:global(body) {
-		background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+		background: var(--background-color);
 	}
 
 	.page {

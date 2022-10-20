@@ -2,12 +2,17 @@
 	import { fly } from "svelte/transition";
 	import { gameStore } from "$scripts/store.js";
 	import { Button } from "$comps";
-	import { SETTINGS } from "$lib/my-config.js"
 
 	let logoPath = "/images/logo.svg";
 	$: logoMod = $gameStore.bonusMode ? "-bonus" : "";
 	$: logoPath = "/images/logo" + logoMod + ".svg";
-	$: test = $gameStore.test;
+
+	/*Svelte has a bug with out:[something] transitions inside #key blocks, so this is a workaround*/
+	let scoreDisplay = $gameStore.getPoints;
+	function test() {
+		scoreDisplay = $gameStore.getPoints; 
+		return "";
+	}
 </script>
 
 <span class="spacer-1" />
@@ -15,8 +20,9 @@
 	<img alt="logo{logoMod}" src={logoPath} />
 	<div class="score-box">
 		<h4 class="score-text">SCORE</h4>
-		{#key test}
-			<span class="score-number" in:fly={{ delay: SETTINGS.RESULT_DELAY, y:-10 }}>{$gameStore.getPoints}</span>
+		{#key $gameStore.detectChange}
+			{test()}
+			<div class="score-number" in:fly={{ delay: 200, duration: 800, y:-10 }}>{scoreDisplay}</div>
 		{/key}
 	</div>
 </header>

@@ -1,31 +1,41 @@
 <script>
 	import { gameStore } from "$scripts/store.js";
-	import { Button, Rulebox } from "$comps";
+	import { Button, Overlay, RuleBox, ConfirmationBox } from "$comps";
 
-	let overlay;
+	let showRules = false;
+	let showConfirmation = false;
 
 	function toggleRules() {
-		overlay.classList.toggle("hidden");
+		showRules = !showRules;
+	}
+	function toggleConfirmation() {
+		showConfirmation = !showConfirmation;
 	}
 </script>
 
 <footer>
 	<div class="buttons-holder">
-		<Button func={gameStore.resetScore} disable={$gameStore.getPoints == 0 || !$gameStore.matchLogic.isPicker}>RESET</Button>
+		<!--prettier-ignore-->
+		<Button	func={toggleConfirmation} disable={$gameStore.getPoints == 0 || !$gameStore.matchLogic.isPicker}>RESET</Button>
 		<Button func={toggleRules}>RULES</Button>
 	</div>
+	<!--prettier-ignore-->
 	<p class="attribution">
-		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-			>Frontend Mentor</a
-		>. Coded by
-		<a href="https://github.com/MLongobardi/FEM-rock-paper-scissors" target="_blank">Mlongobardi</a
-		>.
+		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+		Coded by <a href="https://github.com/MLongobardi/FEM-rock-paper-scissors" target="_blank">Mlongobardi</a>.
 	</p>
 </footer>
 
-<div class="overlay hidden" bind:this={overlay} on:click|self={toggleRules}>
-	<Rulebox bonusMode={$gameStore.bonusMode} closeFunc={toggleRules} />
-</div>
+{#if showRules}
+	<Overlay color="rgba(0, 0, 0, 0.6)" func={toggleRules}>
+		<RuleBox bonusMode={$gameStore.bonusMode} close={toggleRules} />
+	</Overlay>
+{/if}
+{#if showConfirmation}
+	<Overlay color="rgba(0, 0, 0, 0.6)" func={toggleConfirmation}>
+		<ConfirmationBox reset={gameStore.resetScore} close={toggleConfirmation}/>
+	</Overlay>
+{/if}
 
 <style>
 	footer {
@@ -54,21 +64,6 @@
 	:global(:is(.media-M, .media-L, .media-XL)) .buttons-holder :global(button) {
 		flex-basis: auto;
 		width: 8em;
-	}
-
-	.overlay {
-		display: flex;
-		position: fixed;
-		top: 0;
-		justify-content: center;
-		align-items: center;
-		width: 100vw;
-		height: 100vh;
-		background: rgba(0, 0, 0, 0.6);
-		z-index: 2;
-	}
-	.overlay.hidden {
-		display: none;
 	}
 
 	.attribution {
