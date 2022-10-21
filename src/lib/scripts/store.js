@@ -43,6 +43,7 @@ function createStore() {
 			draft.currentPoints[draft.bonusMode] = 0;
 			return draft;
 		});
+		tempStore.updateScoreDisplay();
 	};
 
 	tempStore.playMatch = (n) => {
