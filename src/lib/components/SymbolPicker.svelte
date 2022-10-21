@@ -21,32 +21,29 @@
 </script>
 
 {#key $gameStore.bonusMode}
-<div
-	class="anchor-holder"
-	style:width="{anchorHolderRadius * 2}px"
-	style:height="{anchorHolderRadius * 2}px"
-	in:scale={{delay: 200, duration: 500, start: 0.5}}
->
-	
-	<span
-		class="anchor-origin"
-		style:--variable-top={$gameStore.symbolNames.length == 3 ? "40%" : "50%"}
+	<div
+		class="anchor-holder"
+		style:width="{anchorHolderRadius * 2}px"
+		style:height="{anchorHolderRadius * 2}px"
+		in:scale={{ delay: 200, duration: 400, start: 0.6 }}
 	>
-		<Polygon {vertexList} {lineWidth} />
-		{#each hack($gameStore.symbolNames) as symbolName, index (vertexList[index].id)}
-			<!--multiplying left and bottom values by 1.1 moves anchors outwards a bit while Polygon stays the same-->
-			<span
-				class="symbol-anchor"
-				style:left="{vertexList[index].x * 1.1}px"
-				style:bottom="{vertexList[index].y * 1.1}px"
-			>
-			<!--{#key $gameStore.bonusMode}-->
-				<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true} />
-			<!--{/key}-->
-			</span>
-		{/each}
-	</span>
-</div>
+		<span
+			class="anchor-origin"
+			style:--variable-top={$gameStore.symbolNames.length == 3 ? "40%" : "50%"}
+		>
+			<Polygon {vertexList} {lineWidth} />
+			{#each hack($gameStore.symbolNames) as symbolName, index (vertexList[index].id)}
+				<!--multiplying left and bottom values by 1.1 moves anchors outwards a bit while Polygon stays the same-->
+				<span
+					class="symbol-anchor"
+					style:left="{vertexList[index].x * 1.1}px"
+					style:bottom="{vertexList[index].y * 1.1}px"
+				>
+					<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true} />
+				</span>
+			{/each}
+		</span>
+	</div>
 {/key}
 
 <style>

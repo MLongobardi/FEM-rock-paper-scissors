@@ -22,7 +22,7 @@
 		<h4 class="score-text">SCORE</h4>
 		{#key $gameStore.detectChange}
 			{test()}
-			<div class="score-number" in:fly={{ delay: 200, duration: 800, y:-10 }}>{scoreDisplay}</div>
+			<div class="score-number" in:fly={{ delay: 200, duration: 600, y:-8 }}>{scoreDisplay}</div>
 		{/key}
 	</div>
 </header>

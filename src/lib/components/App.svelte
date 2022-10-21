@@ -12,7 +12,7 @@
 		gameStore.loadSave(loaded);
 		setTimeout(() => {
 			isLoading = false;
-		}, 200);
+		}, 300);
 	});
 
 	let innerWidth; //binded to window.innerWidth
@@ -65,6 +65,7 @@
 </div>
 
 <style>
+	/*Maybe move all of this style tag as well as the MY ADDITIONS part of reset.css into a separate, global.css file and rename reset.css to normalize.css*/
 	:root {
 		/*variables*/
 		--dark-text: hsl(229, 25%, 31%);
@@ -86,5 +87,33 @@
 		display: flex; /*main has flex-grow set to 1*/
 		flex-direction: column;
 		height: 100vh;
+	}
+
+	@media only screen and (orientation:landscape) {
+		/*problem: body isn't aligned with html*/
+		:root {
+			width: 100vw;
+			height: 100vh;
+		}
+
+		:global(body) {
+			transform: rotate(90deg);
+			width: 100vh;
+			height: 100vw;
+		}
+
+		.page {
+			width: 100vh;
+			height: 100vw;
+		}
+
+		:global(:is(.media-L, .media-XL)) {
+			transform: none;
+		}
+
+		:global(:is(.media-L, .media-XL)) .page {
+			width: auto;
+			height: 100vh;
+		}
 	}
 </style>
