@@ -104,7 +104,7 @@ function createStore() {
 			return draft;
 		});
 	};
-	
+
 	tempStore.updateScoreDisplay = () => {
 		tempStore.update((draft) => {
 			/*The score display listens for changes to this value to play its transition*/
@@ -112,7 +112,7 @@ function createStore() {
 			return draft;
 		});
 	}
-	
+
 	tempStore.delayPoints = () => {
 		setTimeout(() => {
 			tempStore.updateScoreDisplay();

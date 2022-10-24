@@ -9,7 +9,7 @@ export function vertexFinder(n, r) {
 			Math.pow(10, SETTINGS.VERTEX_PRECISION)
 		);
 	}
-	
+
 	function hack(list) {
 		if (SETTINGS.HACK && list.length == 3) {
 			//inverts triangle in normal mode
@@ -32,6 +32,6 @@ export function vertexFinder(n, r) {
 		};
 		vertices = [...vertices, newVertex]
 	}
-	
+
 	return hack(vertices);
 }

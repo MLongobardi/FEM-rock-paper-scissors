@@ -59,7 +59,7 @@
 
 	.picker-wrapper.discr {
 		width: var(--min-width);
-		transition: width 0.1s; /*sizeDiscr doesn't update on load without this. Maybe it's a bug?*/
+		transition: width 0.1s; /*sizeDiscr doesn't update on load without this. Maybe it's a svelte bug?*/
 	}
 	:global(.media-S) .picker-wrapper.discr {
 		width: var(--small-width);

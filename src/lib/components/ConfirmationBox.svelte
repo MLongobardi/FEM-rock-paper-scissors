@@ -1,6 +1,5 @@
 <script>
 	export let reset, close;
-	import { Button } from "$comps";
 </script>
 
 <div class="confirmation-box">
@@ -35,7 +34,7 @@
         display: flex;
         justify-content: end;
     }
-	
+
 	button {
 		color: inherit;
 		padding: 0.15em 1em;

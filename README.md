@@ -67,7 +67,15 @@ This allows me to, for example, change the breakpoints in the config file, and k
 
 ### Continued development
 
-I noticed after a certain point that using em units and setting different font sizes for different screen sizes was an easier way to make the app responsive. In hindsight, I should have set font sizes once on the root element, and then used rem units instead of em. I should also account not only for the screen's width, but its height as well.
+I noticed after a certain point that using em units and setting different font sizes for different screen sizes was an easier way to make the app responsive. In hindsight, I should have set font sizes once on the root element, and then used rem units instead of em. I could do it in this way:
+
+```js
+<svelte:head>
+	{@html `<style> :root {font-size: ${fontSize + "px"}}	</style>`}
+</svelte:head>
+```
+Giving fontSize a default value and then updating it for greater screen sizes.
+Furthermore, putting the logic for detecting screen size in a separate store could allow me to access that information on the components that need it and use it on the html/js side of things, it could be done with window.matchMedia.
 
 ### Useful resources
 
