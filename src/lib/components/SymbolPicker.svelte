@@ -27,22 +27,22 @@
 		style:height="{anchorHolderRadius * 2}px"
 		in:scale={{ delay: 200, duration: 400, start: 0.6 }}
 	>
-		<span
+		<div
 			class="anchor-origin"
 			style:--variable-top={$gameStore.symbolNames.length == 3 ? "40%" : "50%"}
 		>
 			<Polygon {vertexList} {lineWidth} />
 			{#each hack($gameStore.symbolNames) as symbolName, index (vertexList[index].id)}
 				<!--multiplying left and bottom values by 1.1 moves anchors outwards a bit while Polygon stays the same-->
-				<span
+				<div
 					class="symbol-anchor"
 					style:left="{vertexList[index].x * 1.1}px"
 					style:bottom="{vertexList[index].y * 1.1}px"
 				>
 					<Symbol name={symbolName.toLowerCase()} radius={symbolRadius} pickerVersion={true} />
-				</span>
+				</div>
 			{/each}
-		</span>
+		</div>
 	</div>
 {/key}
 

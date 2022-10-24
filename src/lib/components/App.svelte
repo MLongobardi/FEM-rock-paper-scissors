@@ -91,8 +91,9 @@
 		height: 100vh;
 	}
 
-	@media only screen and (orientation:landscape) {
-		:global(body:not(.media-L, .media-XL)) .page {
+	@media only screen and (orientation:landscape) and (max-width:992px) {
+		/*had to use a media query for this because it's faster, or else the loading message isn't rotated properly for a split second*/
+		.page {
 			transform: rotate(90deg);
 			transform-origin: bottom left;
 			position: absolute;
