@@ -73,7 +73,14 @@
 
 	.invisible-title {
 		/*h1 tag must be present for accessibility purposes, but design doesn't have a text title*/
-		font-size: 0;
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
 	}
 
 	.score-box {
