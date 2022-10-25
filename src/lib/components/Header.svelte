@@ -21,7 +21,7 @@
 		<img alt="logo{logoMod}" src={logoPath} />
 		<h1 class="invisible-title">{$gameStore.symbolNames.join(" ") + " GAME"}</h1>
 		<div class="score-box">
-			<h4 class="score-text">SCORE</h4>
+			<h2 class="score-text">SCORE</h2>
 			{#key $gameStore.detectChange}
 				{updatePoints()}
 				<div class="score-number" in:fly={{ delay: 200, duration: 600, y: -8 }}>{scoreDisplay}</div>
