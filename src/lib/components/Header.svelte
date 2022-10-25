@@ -9,30 +9,32 @@
 
 	/*Svelte has a bug with out:[something] transitions inside #key blocks, so this is a workaround*/
 	let scoreDisplay = $gameStore.getPoints;
-	function test() {
-		scoreDisplay = $gameStore.getPoints; 
+	function updatePoints() {
+		scoreDisplay = $gameStore.getPoints;
 		return "";
 	}
 </script>
 
-<span class="spacer-1" />
-<header class:bonus={$gameStore.bonusMode}>
-	<img alt="logo{logoMod}" src={logoPath} />
-	<div class="score-box">
-		<h4 class="score-text">SCORE</h4>
-		{#key $gameStore.detectChange}
-			{test()}
-			<div class="score-number" in:fly={{ delay: 200, duration: 600, y:-8 }}>{scoreDisplay}</div>
-		{/key}
+<hr />
+<header>
+	<div class="header" class:bonus={$gameStore.bonusMode}>
+		<img alt="logo{logoMod}" src={logoPath} />
+		<h1 class="invisible-title">{$gameStore.symbolNames.join(" ") + " GAME"}</h1>
+		<div class="score-box">
+			<h4 class="score-text">SCORE</h4>
+			{#key $gameStore.detectChange}
+				{updatePoints()}
+				<div class="score-number" in:fly={{ delay: 200, duration: 600, y: -8 }}>{scoreDisplay}</div>
+			{/key}
+		</div>
+	</div>
+	<div class="button-holder">
+		<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>CHANGE</Button>
 	</div>
 </header>
-<span class="spacer-2" />
-<div class="button-holder">
-	<Button func={gameStore.switchMode} disable={!$gameStore.matchLogic.isPicker}>CHANGE</Button>
-</div>
 
 <style>
-	header {
+	.header {
 		display: grid;
 		grid-template-areas: "logo . score";
 		grid-template-columns: 5.5em 1fr 5em;
@@ -44,22 +46,21 @@
 		padding-left: 1.1em;
 		max-width: 650px;
 	}
-	header.bonus {
+	.header.bonus {
 		grid-template-columns: 3.2em 1fr 5em;
 	}
-	:global(:is(.media-M, .media-L, .media-XL)) header {
+	:global(:is(.media-M, .media-L, .media-XL)) .header {
 		grid-template-columns: max-content 1fr 6em;
 	}
 
-	.spacer-1, .spacer-2 {
+	hr {
+		border: none;
+		margin: 0;
 		flex-basis: 1.9em;
 		min-height: 0.3em;
 		flex-shrink: 1;
 	}
-	.spacer-2 {
-		flex-basis: 0.8em;
-	}
-	:global(:is(.media-M, .media-L, .media-XL)) .spacer-1 {
+	:global(:is(.media-M, .media-L, .media-XL)) hr {
 		flex-basis: 3em;
 	}
 
@@ -68,6 +69,11 @@
 		margin-top: 0;
 		align-self: center;
 		width: 100%;
+	}
+
+	.invisible-title {
+		/*h1 tag must be present for accessibility purposes, but design doesn't have a text title*/
+		font-size: 0;
 	}
 
 	.score-box {
@@ -98,6 +104,7 @@
 		font-weight: bold;
 	}
 	.button-holder {
+		margin-top: 0.8em;
 		height: 0;
 		z-index: 1;
 	}
@@ -111,16 +118,16 @@
 		width: 8em;
 	}
 
-	:global(.media-S) header {
+	:global(.media-S) .header {
 		font-size: 18px;
 	}
-	:global(.media-M) header {
+	:global(.media-M) .header {
 		font-size: 21px;
 	}
-	:global(.media-L) header {
+	:global(.media-L) .header {
 		font-size: 23px;
 	}
-	:global(.media-XL) header {
+	:global(.media-XL) .header {
 		font-size: 27px;
 	}
 </style>
