@@ -34,6 +34,10 @@
 </header>
 
 <style>
+	header {
+		z-index: 1;
+	}
+	
 	.header {
 		display: grid;
 		grid-template-areas: "logo . score";
@@ -45,7 +49,6 @@
 		padding: 0.5em;
 		padding-left: 1.1em;
 		max-width: 650px;
-		z-index: 1;
 	}
 	.header.bonus {
 		grid-template-columns: 3.2em 1fr 5em;
