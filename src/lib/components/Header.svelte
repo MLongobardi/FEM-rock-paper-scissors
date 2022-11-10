@@ -45,6 +45,7 @@
 		padding: 0.5em;
 		padding-left: 1.1em;
 		max-width: 650px;
+		z-index: 1;
 	}
 	.header.bonus {
 		grid-template-columns: 3.2em 1fr 5em;
@@ -113,11 +114,9 @@
 	.button-holder {
 		margin-top: 0.8em;
 		height: 0;
-		z-index: 1;
 	}
 	:global(:is(.media-M, .media-L, .media-XL)) .button-holder {
 		height: auto;
-		z-index: auto;
 	}
 	.button-holder :global(button) {
 		display: block;
