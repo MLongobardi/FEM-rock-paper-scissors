@@ -44,6 +44,7 @@ function createStore() {
 			return draft;
 		});
 		tempStore.updateScoreDisplay();
+		tempStore.saveGame();
 	};
 
 	tempStore.playMatch = (n) => {
